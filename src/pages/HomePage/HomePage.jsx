@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import { Route, Routes, useNavigate } from "react-router";
 export default function HomePage() {
@@ -7,7 +7,15 @@ export default function HomePage() {
     navigate("/allEvents");
   };
   let navigate = useNavigate();
-
+  const [data, setdata] = useState({
+    name: [],
+    location: "",
+    date: "",
+    user: [],
+  });
+  let handleChange = (e) => {
+    this.useState({ [e.target.name]: e.target.value });
+  };
   return (
     <div>
       <h1>TicketBae</h1>
@@ -16,20 +24,22 @@ export default function HomePage() {
           <label>
             <input
               type="text"
-              name="artist"
+              name="name"
               placeholder="ARTIST"
-              // value={data.name}
+              value={data.artist}
+              onChange={handleChange}
             ></input>
           </label>
           <label>
             <input
               type="text"
-              name="Location"
+              name="location"
               placeholder="LOCATION"
-              // value={event.userName}
+              value={data.location}
+              onChange={handleChange}
             ></input>
           </label>
-          <select value="date" onChange={() => "hello"}>
+          <select name="date" value={data.date} onChange={handleChange}>
             <option value="empty" placeholder="Date"></option>
             <option value="jan-march">JAN-MARCH</option>
             <option value="apr-june">APRIL-JUNE</option>
