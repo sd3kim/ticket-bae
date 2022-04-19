@@ -1,6 +1,7 @@
 import React from "react";
 
 import { Link } from "react-router-dom";
+import UserLogOut from "../components/UserLogOut/UserLogOut";
 function Nav() {
   return (
     <>
@@ -10,10 +11,14 @@ function Nav() {
         </div>
         <div className="nav">
           <div>
-            <Link to="/login">Profile</Link>
+            <Link to="/">Profile</Link>
           </div>
           <div>
-            <Link to="/signup">LogOut</Link>
+            {/* <Link to="/signup">LogOut</Link> */}
+            {/* <UserLogOut
+              setUserInState={this.setUserInState}
+              user={this.state.user}
+            /> */}
           </div>
         </div>
       </nav>
