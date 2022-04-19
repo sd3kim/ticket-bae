@@ -1,7 +1,7 @@
 import React from "react";
-import Navbar from "../../components/Navbar/Navbar";
 import { Route, Routes, useNavigate } from "react-router";
-export default function HomePage() {
+
+function SearchFeature() {
   const handleSubmit = (event) => {
     event.preventDefault();
     navigate("/allEvents");
@@ -10,7 +10,6 @@ export default function HomePage() {
 
   return (
     <div>
-      <h1>TicketBae</h1>
       <div className="searchbar">
         <form>
           <label>
@@ -52,3 +51,5 @@ export default function HomePage() {
     </div>
   );
 }
+
+export default SearchFeature;

@@ -1,21 +1,24 @@
 import "./App.css";
+import React, { useState, useEffect } from "react";
 import { Route, Routes, Link } from "react-router-dom";
-import React from "react";
+// import React from "react";
 import Navbar from "./components/Navbar/Navbar";
 import HomePage from "./pages/HomePage/HomePage";
 import AllEvents from "./components/AllEvents/AllEvents";
 import Nav from "./components/Navbar/Nav";
+import SearchFeature from "./pages/HomePage/SearchFeature";
 
-function App() {
+function App(props) {
   return (
     <div className="App">
       <Navbar />
-      <Nav />
+      {/* <Nav /> */}
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<h4>Login</h4>} />
         <Route path="/signup" element={<h4>Sign Up</h4>} />
         <Route path="/allEvents" element={<AllEvents />} />
+        {/* <Route path="/" element={<SearchFeature />} /> */}
       </Routes>
     </div>
   );
