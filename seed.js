@@ -21,6 +21,10 @@ axios
   .request(options)
   .then(function (response) {
     console.log(response.data);
+    const myData = {
+        key1: response.data.name
+        // pick things you need
+    }
   })
   .catch(function (error) {
     console.error(error);
