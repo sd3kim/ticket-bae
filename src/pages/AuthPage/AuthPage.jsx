@@ -1,6 +1,7 @@
 import React from "react";
-import LoginForm from "../components/components/LoginForm/LoginForm";
-import SignUpForm from "../components/components/SignUp/SignUpForm";
+import LoginForm from "../../components/LoginForm/LoginForm";
+import SignUpForm from "../../components/SignUpForm/SignUpForm";
+
 export default class AuthPage extends React.Component {
   state = {
     showLogin: true,
