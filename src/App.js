@@ -1,29 +1,3 @@
-<<<<<<< HEAD
-import "./App.css";
-import React, { useState, useEffect } from "react";
-import { Route, Routes, Link } from "react-router-dom";
-// import React from "react";
-import Navbar from "./components/Navbar/Navbar";
-import HomePage from "./pages/HomePage/HomePage";
-import AllEvents from "./components/AllEvents/AllEvents";
-import Nav from "./components/Navbar/Nav";
-import SearchFeature from "./pages/HomePage/SearchFeature";
-
-function App(props) {
-  return (
-    <div className="App">
-      <Navbar />
-      {/* <Nav /> */}
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/login" element={<h4>Login</h4>} />
-        <Route path="/signup" element={<h4>Sign Up</h4>} />
-        <Route path="/allEvents" element={<AllEvents />} />
-        {/* <Route path="/" element={<SearchFeature />} /> */}
-      </Routes>
-    </div>
-  );
-=======
 import React from "react";
 import { Route, Routes, Link } from "react-router-dom";
 import "./App.css";
@@ -34,6 +8,7 @@ import UserLogOut from "./components/components/UserLogOut/UserLogOut";
 import AllEvents from "./components/AllEvents/AllEvents";
 import HomePage from "./pages/HomePage/HomePage";
 import Nav from "./components/Navbar/Nav";
+
 class App extends React.Component {
   state = {
     user: null,
@@ -70,7 +45,6 @@ class App extends React.Component {
               <Route path="/" element={<HomePage />} />
               <Route path="/allEvents" element={<AllEvents />} />
             </Routes>
-            <HomePage />
           </div>
         ) : (
           <AuthPage setUserInState={this.setUserInState} />
@@ -78,7 +52,6 @@ class App extends React.Component {
       </div>
     );
   }
->>>>>>> 0d67c9867250fd4a0712dc8884d9df2c2dab109a
 }
 
 export default App;
