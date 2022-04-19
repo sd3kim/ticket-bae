@@ -4,11 +4,13 @@ import React from "react";
 import Navbar from "./components/Navbar/Navbar";
 import HomePage from "./pages/HomePage/HomePage";
 import AllEvents from "./components/AllEvents/AllEvents";
+import Nav from "./components/Navbar/Nav";
 
 function App() {
   return (
     <div className="App">
       <Navbar />
+      <Nav />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<h4>Login</h4>} />
