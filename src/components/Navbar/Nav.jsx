@@ -1,7 +1,8 @@
 import React from "react";
 
 import { Link } from "react-router-dom";
-import UserLogOut from "../components/UserLogOut/UserLogOut";
+import UserLogOut from "../UserLogOut/UserLogOut";
+
 function Nav() {
   return (
     <>
