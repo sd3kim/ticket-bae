@@ -1,44 +1,52 @@
 import { Route, Routes, useNavigate } from "react-router";
 import { useState } from "react";
+import AllEvents from "../../components/AllEvents/AllEvents";
 
-function SearchFeature() {
+function SearchFeature(props) {
+  const [userInput, setUserInput] = useState({
+    name: "",
+    // location: "",
+    date: "",
+  });
+
+  let handleChange = (e) => {
+    if (e.target.name || e.target.location || e.target.date === "")
+      setUserInput({ ...userInput, [e.target.name]: e.target.value });
+  };
+
+  // let storage = localStorage.setItem("userInput", userInput.name);
+  // console.log("storage", storage);
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    navigate("/allEvents");
+    // navigate("/allEvents");
+    console.log(userInput);
   };
-  let navigate = useNavigate();
-  const [data, setdata] = useState({
-    name: [],
-    location: "",
-    date: "",
-    user: [],
-  });
-  let handleChange = (e) => {
-    this.useState({ [e.target.name]: e.target.value });
-  };
+  // let navigate = useNavigate();
+
   return (
     <div>
       <div className="searchbar">
-        <form>
+        <form onSubmit={handleSubmit}>
           <label>
             <input
               type="text"
               name="name"
               placeholder="ARTIST"
-              value={data.artist}
+              value={userInput.artist}
               onChange={handleChange}
             ></input>
           </label>
-          <label>
+          {/* <label>
             <input
               type="text"
               name="location"
               placeholder="LOCATION"
-              value={data.location}
+              value={userInput.location}
               onChange={handleChange}
             ></input>
-          </label>
-          <select name="date" value={data.date} onChange={handleChange}>
+          </label> */}
+          <select name="date" value={userInput.date} onChange={handleChange}>
             <option value="empty" placeholder="Date"></option>
             <option value="jan-march">JAN-MARCH</option>
             <option value="apr-june">APRIL-JUNE</option>
@@ -55,7 +63,6 @@ function SearchFeature() {
               }
             />
           </Routes>
-          {/* <input type="submit" value="Search" onSubmit={handleSubmit} /> */}
         </form>
       </div>
     </div>
