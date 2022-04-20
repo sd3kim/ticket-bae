@@ -6,7 +6,7 @@ export default function AllEvents({ userInput }) {
   useEffect(() => {
     async function fetchData() {
       const response = await fetch(
-        `https://app.ticketmaster.com/discovery/v2/events?apikey=efomLcpWJQWbkN9TXlGgmOc98CZzZgkh&segmentId=KZFzniwnSyZfZ7v7nJ`
+        `https://app.ticketmaster.com/discovery/v2/events?apikey=78AE5ANtw2O28XJJoxZn6gnMwJG0pOEc&locale=*&startDateTime=2022-04-01T10:36:00Z&endDateTime=2022-04-30T10:36:00Z&countryCode=CA&segmentId=KZFzniwnSyZfZ7v7nJ`
       );
       const showEvents = await response.json();
       const eventName = showEvents._embedded.events;
@@ -39,14 +39,6 @@ export default function AllEvents({ userInput }) {
       {!localStorage.getItem("userInput")
         ? event.event && event.event.map((el) => <li>{el.name}</li>)
         : event.event}
-      <p>
-        {/* {event.event &&
-          event.event
-            .filter(
-              (n) => n.toLowerCase().indexOf(userInput.toLowerCase()) > -1
-            )
-            .map((n) => <li>{n}</li>)} */}
-      </p>
       {/* )} */}
     </div>
   );
