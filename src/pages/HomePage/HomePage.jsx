@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import AllEvents from "../../components/AllEvents/AllEvents";
 import SearchFeature from "./SearchFeature";
 
 export default function HomePage() {

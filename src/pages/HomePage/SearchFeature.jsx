@@ -14,15 +14,19 @@ function SearchFeature(props) {
       setUserInput({ ...userInput, [e.target.name]: e.target.value });
   };
 
-  // let storage = localStorage.setItem("userInput", userInput.name);
+  let storage = localStorage.setItem("userInput", userInput.name);
   // console.log("storage", storage);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // navigate("/allEvents");
-    console.log(userInput);
+    // pass saved userInput.name and userInput.date through a filter and show results in allEvents page
+    navigate("/allEvents");
+    const eventName = userInput.name;
+    const eventDates = userInput.date;
+    console.log("user event name input is: ", eventName);
+    console.log("user date input is: ", eventDates);
   };
-  // let navigate = useNavigate();
+  let navigate = useNavigate();
 
   return (
     <div>
@@ -33,7 +37,7 @@ function SearchFeature(props) {
               type="text"
               name="name"
               placeholder="ARTIST"
-              value={userInput.artist}
+              value={userInput.name}
               onChange={handleChange}
             ></input>
           </label>
