@@ -4,7 +4,9 @@ export default function SavedShowsPage(props) {
   return (
     <div>
       SavedShowsPage
-      <div>July 15 2022: Lauv @ Molson Ampitheatre</div>
+      <br />
+      <br />
+      <div>July 15 2022: Backstreet Boys @ Molson Ampitheatre</div>
     </div>
   );
 }
