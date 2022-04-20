@@ -10,11 +10,14 @@ function SearchFeature(props) {
   });
 
   let handleChange = (e) => {
-    if (e.target.name || e.target.location || e.target.date === "")
+    if (e.target.name || e.target.date === "")
       setUserInput({ ...userInput, [e.target.name]: e.target.value });
   };
 
   let storage = localStorage.setItem("userInput", userInput.name);
+
+  let storage2 = localStorage.setItem("userInputDate", userInput.date);
+
   // console.log("storage", storage);
 
   const handleSubmit = (event) => {
@@ -50,13 +53,13 @@ function SearchFeature(props) {
               onChange={handleChange}
             ></input>
           </label> */}
-          <select name="date" value={userInput.date} onChange={handleChange}>
-            <option value="empty" placeholder="Date"></option>
-            <option value="jan-march">JAN-MARCH</option>
-            <option value="apr-june">APRIL-JUNE</option>
-            <option value="july-sept">JULY-SEPT</option>
-            <option value="oct-dec">OCT-DEC</option>
-          </select>
+          <input
+            type="date"
+            id="meeting-time"
+            name="date"
+            value={userInput.date}
+            onChange={handleChange}
+          ></input>
           <Routes>
             <Route
               path="/"
