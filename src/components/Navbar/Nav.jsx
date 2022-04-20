@@ -15,11 +15,7 @@ function Nav() {
             <Link to="/profile">Profile</Link>
           </div>
           <div>
-            {/* <Link to="/signup">LogOut</Link> */}
-            {/* <UserLogOut
-              setUserInState={this.setUserInState}
-              user={this.state.user}
-            /> */}
+            <Link to="/savedShows">SavedShows</Link>
           </div>
         </div>
       </nav>
