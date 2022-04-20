@@ -1,14 +1,12 @@
 import React from "react";
 import { Route, Routes, Link } from "react-router-dom";
 import "./App.css";
-import Navbar from "./components/Navbar/Navbar";
 import AuthPage from "./pages/AuthPage/AuthPage";
 import UserLogOut from "./components/UserLogOut/UserLogOut";
 import AllEvents from "./components/AllEvents/AllEvents";
 import HomePage from "./pages/HomePage/HomePage";
 import Nav from "./components/Navbar/Nav";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
-import SavedShowsPage from "./pages/SavedShowsPage/SavedShowsPage";
 
 class App extends React.Component {
   state = {
@@ -56,7 +54,6 @@ class App extends React.Component {
               <Route path="/" element={<HomePage />} />
               <Route path="/allEvents" element={<AllEvents />} />
               <Route path="/profile" element={<ProfilePage />} />
-              <Route path="/savedShows" element={<SavedShowsPage />} />
             </Routes>
           </div>
         ) : (
