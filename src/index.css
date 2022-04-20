@@ -30,3 +30,12 @@ nav {
   gap: 100px;
   margin-left: 800px;
 }
+.log {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-top: 10px;
+}
+img {
+  height: 100px;
+  width: 100px;
+}
