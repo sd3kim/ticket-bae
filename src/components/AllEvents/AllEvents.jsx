@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import HomePage from "../../pages/HomePage/HomePage";
 
 export default function AllEvents({ userInput }) {
   const [event, setEvent] = useState([]);
