@@ -2,36 +2,30 @@ import { Route, Routes, useNavigate } from "react-router";
 import { useState } from "react";
 import AllEvents from "../../components/AllEvents/AllEvents";
 
-function SearchFeature(props) {
-  const [userInput, setUserInput] = useState({
-    name: "",
-    // location: "",
-    date: "",
-  });
-
-  let handleChange = (e) => {
-    if (e.target.name || e.target.location || e.target.date === "")
-      setUserInput({ ...userInput, [e.target.name]: e.target.value });
-  };
-
-  // let storage = localStorage.setItem("userInput", userInput.name);
-  // console.log("storage", storage);
-
+function SearchFeature() {
   const handleSubmit = (event) => {
     event.preventDefault();
-    // navigate("/allEvents");
-    console.log(userInput);
+    navigate("/allEvents");
   };
-  // let navigate = useNavigate();
-
+  let navigate = useNavigate();
+  const [userInput, setUserInput] = useState({
+    name: [],
+    user: [],
+  });
+  let handleChange = (e) => {
+    setUserInput({ name: e.target.value });
+    console.log("this is e.target.value", e.target.value);
+  };
+  let storage = localStorage.setItem("userInput", userInput.name);
+  console.log("storage", storage);
   return (
     <div>
       <div className="searchbar">
-        <form onSubmit={handleSubmit}>
+        <form>
           <label>
             <input
               type="text"
-              name="name"
+              name="artist"
               placeholder="ARTIST"
               value={userInput.artist}
               onChange={handleChange}
