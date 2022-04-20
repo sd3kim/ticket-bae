@@ -7,6 +7,8 @@ import UserLogOut from "./components/UserLogOut/UserLogOut";
 import AllEvents from "./components/AllEvents/AllEvents";
 import HomePage from "./pages/HomePage/HomePage";
 import Nav from "./components/Navbar/Nav";
+import ProfilePage from "./pages/ProfilePage/ProfilePage";
+import SavedShowsPage from "./pages/SavedShowsPage/SavedShowsPage";
 
 class App extends React.Component {
   state = {
@@ -28,6 +30,16 @@ class App extends React.Component {
       }
     }
   };
+
+  findArtists = async () => {
+    try {
+      let getArtistList = await fetch("api/artists");
+      let artists = await getArtistList.json();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   render() {
     return (
       <div className="App">
@@ -43,6 +55,8 @@ class App extends React.Component {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/allEvents" element={<AllEvents />} />
+              <Route path="/profile" element={<ProfilePage />} />
+              <Route path="/savedShows" element={<SavedShowsPage />} />
             </Routes>
           </div>
         ) : (
