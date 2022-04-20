@@ -5,10 +5,8 @@ mongoose.connect("mongodb://127.0.0.1:27017/ticketbae", {
   useUnifiedTopology: true,
 });
 
-const ticketbaeDB = mongoose.connection;
+const db = mongoose.connection;
 
-ticketbaeDB.on("connected", function () {
-  console.log(
-    `Connected to ${ticketbaeDB.name} at ${ticketbaeDB.host}:${ticketbaeDB.port}`
-  );
+db.on("connected", function () {
+  console.log(`Connected to ${db.name} at ${db.host}:${db.port}`);
 });
