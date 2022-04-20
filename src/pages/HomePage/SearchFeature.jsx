@@ -15,7 +15,10 @@ function SearchFeature(props) {
   };
 
   let storage = localStorage.setItem("userInput", userInput.name);
+
   let storage2 = localStorage.setItem("userInputDate", userInput.date);
+
+  // console.log("storage", storage);
 
   const handleSubmit = (event) => {
     event.preventDefault();
