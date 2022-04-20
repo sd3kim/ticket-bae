@@ -10,6 +10,9 @@ export default function AllEvents({ userInput }) {
       );
       const showEvents = await response.json();
       const eventName = showEvents._embedded.events;
+      const eventDateMapped = eventName.map((el) => el.dates);
+      const eventDate = eventDateMapped.map((el) => el.start.localDate);
+      console.log("event date", eventDate);
       const eventMapped = eventName.map((el) => el.name);
       const savedEventName = localStorage.getItem("userInput");
       console.log("saved event name", savedEventName);
@@ -36,9 +39,11 @@ export default function AllEvents({ userInput }) {
   return (
     <div>
       These are a list of the events
-      {!localStorage.getItem("userInput")
-        ? event.event && event.event.map((el) => <li>{el.name}</li>)
-        : event.event}
+      {!localStorage.getItem("userInput") ? (
+        event.event && event.event.map((el) => <li>{el.name}</li>)
+      ) : (
+        <li>{event.event}</li>
+      )}
       <p>
         {/* {event.event &&
           event.event

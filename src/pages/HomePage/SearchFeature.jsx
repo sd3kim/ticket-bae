@@ -9,15 +9,20 @@ function SearchFeature() {
   };
   let navigate = useNavigate();
   const [userInput, setUserInput] = useState({
-    name: [],
-    user: [],
+    name: "",
+    // location: "",
+    date: "",
   });
   let handleChange = (e) => {
-    setUserInput({ name: e.target.value });
-    console.log("this is e.target.value", e.target.value);
+    if (e.target.name || e.target.date === "")
+      setUserInput({ ...userInput, [e.target.name]: e.target.value });
+    console.log("e.target", setUserInput.date);
   };
   let storage = localStorage.setItem("userInput", userInput.name);
+  console.log(localStorage.setItem("usersInput", userInput));
   console.log("storage", storage);
+  console.log("name", userInput.name);
+  console.log("date", userInput.date);
   return (
     <div>
       <div className="searchbar">
