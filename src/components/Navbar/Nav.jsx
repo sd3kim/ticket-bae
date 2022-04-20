@@ -12,14 +12,10 @@ function Nav() {
         </div>
         <div className="nav">
           <div>
-            <Link to="/login">Profile</Link>
+            <Link to="/profile">Profile</Link>
           </div>
           <div>
-            {/* <Link to="/signup">LogOut</Link> */}
-            {/* <UserLogOut
-              setUserInState={this.setUserInState}
-              user={this.state.user}
-            /> */}
+            <Link to="/savedShows">SavedShows</Link>
           </div>
         </div>
       </nav>
