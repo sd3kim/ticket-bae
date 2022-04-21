@@ -20,12 +20,41 @@ export default function AllEvents({ userInput }) {
       // console.log("saved event name", savedEventName);
       // console.log("saved event date", savedEventDate);
       // console.log("saved event mapped", eventNameMapped);
+
+
       for (let i = 0; i < eventNameMapped.length; i++) {
         // if no input for name or date is given:
         if (savedEventName.length === 0 && savedEventDate.length === 0) {
-          setEvent({ event: eventName });
+          let list = [];
+          list.push(eventNameMapped[i]);
+          setEvent({ event: eventNameMapped[i], date: eventDate[i] });
+          console.log("all events", eventNameMapped[i], eventDate[i]);
+          // console.log(eventNameMapped[i]);
+          // no event name and only date
+        } else if (
+          savedEventName.length === 0 &&
+          savedEventDate === eventDate[i]
+        ) {
+          // if (eventNameMapped[i].includes(savedEventDate)) {
+          let eventMatched = eventNameMapped[i];
+          setEvent({ date: savedEventDate, event: eventMatched });
+          // } else {
+          console.log("empty input and only date", eventMatched);
+
           // if the given name doesn't match
-        } else if (savedEventName !== eventNameMapped[i]) {
+        } else if (
+          savedEventName !== eventNameMapped[i] &&
+          savedEventDate === 0
+        ) {
+          console.log("no events");
+
+//       for (let i = 0; i < eventNameMapped.length; i++) {
+//         // if no input for name or date is given:
+//         if (savedEventName.length === 0 && savedEventDate.length === 0) {
+//           setEvent({ event: eventName });
+//           // if the given name doesn't match
+//         } else if (savedEventName !== eventNameMapped[i]) {
+
           setEvent({ event: "there are no events" });
           // if the given date doesn't match
           // code here
@@ -34,14 +63,31 @@ export default function AllEvents({ userInput }) {
           savedEventName === eventNameMapped[i] &&
           savedEventDate === eventDate[i]
         ) {
-          const eventFilterName = eventNameMapped.filter(
-            (el) => el.indexOf(savedEventName) > -1
-          );
+
+          // const eventFilterName = eventNameMapped.filter(
+          //   (el) => el.indexOf(savedEventName) > -1
+          // );
           // const eventFilterDate = eventDate.filter(
           //   (el) => el.indexOf(savedEventDate) > -1
           // );
-          setEvent({ event: eventFilterName, date: savedEventDate });
-          return;
+          setEvent({ event: savedEventName, date: savedEventDate });
+          console.log(
+            "date and input all selected",
+            { event },
+            savedEventName,
+            eventDate[i]
+          );
+          // return;
+
+//           const eventFilterName = eventNameMapped.filter(
+//             (el) => el.indexOf(savedEventName) > -1
+//           );
+//           // const eventFilterDate = eventDate.filter(
+//           //   (el) => el.indexOf(savedEventDate) > -1
+//           // );
+//           setEvent({ event: eventFilterName, date: savedEventDate });
+//           return;
+
         }
       }
     }
@@ -51,13 +97,51 @@ export default function AllEvents({ userInput }) {
   return (
     <div>
       These are a list of the events
-      {!localStorage.getItem("userInput") ? (
-        event.event && event.event.map((el) => <li>{el.name}</li>)
+      {/* {!localStorage.getItem("userInput") ? (
+        event.event &&
+        event.event.map((el) => (
+          <li>
+            {el.name}
+            {el.date}
+          </li>
+        ))
       ) : (
         <li>
           {event.event}, {event.date}
         </li>
-      )}
+
+      )} */}
+      {!localStorage.getItem("userInput") &&
+      !localStorage.getItem("userInputDate")
+        ? event.event && (
+            // event.event.map((el) => (
+            // event.date.map((l) => (
+            <li>
+              {event.event},{event.date}
+            </li>
+          )
+        : // ))
+        // ))
+        // event.event.map((el) => (
+        !localStorage.getItem("userInput") &&
+          localStorage.getItem("userInputDate")
+        ? event.event && (
+            <li>
+              {event.event},{event.date}
+            </li>
+          )
+        : localStorage.getItem("userInput") &&
+          !localStorage.getItem("userInputDate")
+        ? event.date &&
+          event.date.map((el) => (
+            <li>
+              {event.event}, {el.date}
+            </li>
+          ))
+        : event.event}
+
+//       )}
+
     </div>
   );
 }
