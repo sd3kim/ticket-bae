@@ -39,3 +39,7 @@ img {
   height: 100px;
   width: 100px;
 }
+/* .inline {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+} */
