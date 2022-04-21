@@ -99,18 +99,6 @@ export default function AllEvents({ userInput, addSelectedEvent }) {
   console.log("this is the result:", allEvents);
   console.log("this is the new result: ", localStorage.getItem("somethingNew"));
 
-  let handleAdd = async (e) => {
-    // alert("this has been clicked");
-    // artistName.push(e.target.inner)
-    // let showName = e.target.name;
-    // // localStorage.getItem({eventName: })
-    // await fetch("/api/addEvent", {
-    //   method: "POST",
-    //   body: JSON.stringify({ name: "ZZ top", date: "Date" }),
-    // });
-    // POST - Add the show to a user's list of shows in the database
-  };
-
   return (
     <div>
       <h1>These are a list of the events:</h1>
