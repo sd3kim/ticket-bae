@@ -92,6 +92,7 @@ export default function AllEvents({ userInput }) {
   console.log("this is the new result: ", localStorage.getItem("somethingNew"));
 
   let navigate = useNavigate();
+
   let handleClick = (e) => {
     let evt = e.target.value;
     console.log("this is evt ", evt);
@@ -101,6 +102,23 @@ export default function AllEvents({ userInput }) {
     // console.log("this is saved", localStorage.getItem("saved"));
     // navigate("/savedshows");
   };
+
+  // handleCheckout = async () => {
+  //   try {
+  //     let jwt = localStorage.getItem('token')
+  //     let fetchResponse = await fetch("/api/orders", {
+  //       method: "POST",
+  //       headers: {"Content-Type": "application/json",'Authorization': 'Bearer ' + jwt},
+  //       body: JSON.stringify({lineItems: this.state.lineItems}) // <-- send this object to server
+  //       })
+  //     let serverResponse = await fetchResponse.json() // <-- decode fetch response
+  //     console.log("Success:", serverResponse)   // <-- log server response
+
+  //     this.setState({lineItems: []}) // if order sent without errors, set state to empty
+  //   } catch (err) {
+  //     console.error("Error:", err) // <-- log if error
+  //   }
+  // }
 
   let storage = [];
   return (
