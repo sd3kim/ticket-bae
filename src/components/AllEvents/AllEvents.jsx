@@ -29,22 +29,6 @@ export default function AllEvents({ userInput }) {
       // console.log("saved event name", savedEventName);
       // console.log("saved event date", savedEventDate);
       // console.log("saved event mapped", eventNameMapped);
-<<<<<<< HEAD
-      debugger;
-      for (let i = 0; i < eventNameMapped.length; i++) {
-        // if no input for name or date is given:
-        if (savedEventName.length === 0 && savedEventDate.length === 0) {
-          let list = [];
-          list.push(eventNameMapped[i]);
-          setEvent({
-            event: eventNameMapped[i],
-            date: eventDate[i],
-          });
-          console.log("all events", eventNameMapped[i], eventDate[i]);
-
-          // console.log(eventNameMapped[i]);
-          // no event name and only date
-=======
       // debugger;
       for (let i = 0; i < eventNameMapped.length; i++) {
         // if no input for name or date is given:
@@ -54,37 +38,10 @@ export default function AllEvents({ userInput }) {
           setEvent({ event: eventNameMapped[i], date: eventDate[i] });
           // console.log("showing all events", eventNameMapped[i], eventDate[i]);
           // no event name and only date AND date exists
->>>>>>> fc247e9f6fdd0a12284db65574650c016253b81c
         } else if (
           savedEventName.length === 0 &&
           savedEventDate === eventDate[i]
         ) {
-<<<<<<< HEAD
-          // if (eventNameMapped[i].includes(savedEventDate)) {
-          setEvent({ date: savedEventDate, event: eventNameMapped[i] });
-          // } else {
-          console.log("empty input and only date", eventNameMapped[i]);
-
-          // if the given name doesn't match
-          // } else if (
-          //   savedEventName !== eventNameMapped[i] &&
-          //   savedEventDate.length === 0
-          // ) {
-          //   setEvent({ event: "there are no events", date: "N/A" });
-          //   console.log("no events", event);
-
-          //       for (let i = 0; i < eventNameMapped.length; i++) {
-          //         // if no input for name or date is given:
-          //         if (savedEventName.length === 0 && savedEventDate.length === 0) {
-          //           setEvent({ event: eventName });
-          //           // if the given name doesn't match
-          //         } else if (savedEventName !== eventNameMapped[i]) {
-
-          // if the given date doesn't match
-          // code here
-          // if name AND date matches:
-        } else if (
-=======
           let eventMatched = eventNameMapped[i];
           console.log("empty input and only date", eventMatched);
           noArtistsRightDate.push(eventNameMapped[i]);
@@ -112,47 +69,17 @@ export default function AllEvents({ userInput }) {
         }
         // if the inputted event name exists, and it is on the selected date:
         else if (
->>>>>>> fc247e9f6fdd0a12284db65574650c016253b81c
           savedEventName === eventNameMapped[i] &&
           savedEventDate.length === 0
         ) {
           setEvent({ event: savedEventName, date: eventDate[i] });
-          console.log("event matched and no dates", eventNameMapped[i]);
         } else if (
           savedEventName === eventNameMapped[i] &&
           savedEventDate === eventDate[i]
         ) {
-<<<<<<< HEAD
-          // const eventFilterName = eventNameMapped.filter(
-          //   (el) => el.indexOf(savedEventName) > -1
-          // );
-          // const eventFilterDate = eventDate.filter(
-          //   (el) => el.indexOf(savedEventDate) > -1
-          // );
-          setEvent({ event: savedEventName, date: savedEventDate });
-          console.log(
-            "date and input all selected",
-            eventNameMapped[i],
-            eventDate[i]
-          );
-          // return;
-
-          //           const eventFilterName = eventNameMapped.filter(
-          //             (el) => el.indexOf(savedEventName) > -1
-          //           );
-          //           // const eventFilterDate = eventDate.filter(
-          //           //   (el) => el.indexOf(savedEventDate) > -1
-          //           // );
-          //           setEvent({ event: eventFilterName, date: savedEventDate });
-          //           return;
-        } else {
-          setEvent({ event: "no event found", date: "N/A" });
-          console.log("no events");
-=======
           console.log("the given artist is playing on the given date");
         } else if (savedEventName !== eventNameMapped[i]) {
           console.log(`${savedEventName} does not exist`);
->>>>>>> fc247e9f6fdd0a12284db65574650c016253b81c
         }
       }
 
@@ -187,43 +114,6 @@ export default function AllEvents({ userInput }) {
 
   return (
     <div>
-
-<<<<<<< HEAD
-      )} */}
-      {!localStorage.getItem("userInput") &&
-      !localStorage.getItem("userInputDate") ? (
-        event.event && (
-          // event.event.map((el) => (
-          // event.date.map((l) => (
-          <li>
-            {event.event},{event.date}
-          </li>
-        )
-      ) : // ))
-      // ))
-      // event.event.map((el) => (
-      !localStorage.getItem("userInput") &&
-        localStorage.getItem("userInputDate") ? (
-        event.event && (
-          <li>
-            {event.event},{event.date}
-          </li>
-        )
-      ) : localStorage.getItem("userInput") &&
-        !localStorage.getItem("userInputDate") ? (
-        event.event && (
-          // event.date.map((el) => (
-          <li>
-            {event.event}, {event.date}
-          </li>
-        )
-      ) : (
-        <li>
-          {event.event},{event.date}
-        </li>
-      )}
-      {/*  )} */}
-=======
       These are a list of the events:
       <div>
         {event2.allEvents &&
@@ -260,7 +150,6 @@ export default function AllEvents({ userInput }) {
             )
           : event.event} */}
       </div>
->>>>>>> fc247e9f6fdd0a12284db65574650c016253b81c
     </div>
   );
 }
