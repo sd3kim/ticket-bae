@@ -21,6 +21,7 @@ export default function AllEvents({ userInput }) {
       // console.log("saved event date", savedEventDate);
       // console.log("saved event mapped", eventNameMapped);
 
+
       for (let i = 0; i < eventNameMapped.length; i++) {
         // if no input for name or date is given:
         if (savedEventName.length === 0 && savedEventDate.length === 0) {
@@ -46,6 +47,14 @@ export default function AllEvents({ userInput }) {
           savedEventDate === 0
         ) {
           console.log("no events");
+
+//       for (let i = 0; i < eventNameMapped.length; i++) {
+//         // if no input for name or date is given:
+//         if (savedEventName.length === 0 && savedEventDate.length === 0) {
+//           setEvent({ event: eventName });
+//           // if the given name doesn't match
+//         } else if (savedEventName !== eventNameMapped[i]) {
+
           setEvent({ event: "there are no events" });
           // if the given date doesn't match
           // code here
@@ -54,6 +63,7 @@ export default function AllEvents({ userInput }) {
           savedEventName === eventNameMapped[i] &&
           savedEventDate === eventDate[i]
         ) {
+
           // const eventFilterName = eventNameMapped.filter(
           //   (el) => el.indexOf(savedEventName) > -1
           // );
@@ -68,6 +78,16 @@ export default function AllEvents({ userInput }) {
             eventDate[i]
           );
           // return;
+
+//           const eventFilterName = eventNameMapped.filter(
+//             (el) => el.indexOf(savedEventName) > -1
+//           );
+//           // const eventFilterDate = eventDate.filter(
+//           //   (el) => el.indexOf(savedEventDate) > -1
+//           // );
+//           setEvent({ event: eventFilterName, date: savedEventDate });
+//           return;
+
         }
       }
     }
@@ -89,6 +109,7 @@ export default function AllEvents({ userInput }) {
         <li>
           {event.event}, {event.date}
         </li>
+
       )} */}
       {!localStorage.getItem("userInput") &&
       !localStorage.getItem("userInputDate")
@@ -118,6 +139,9 @@ export default function AllEvents({ userInput }) {
             </li>
           ))
         : event.event}
+
+//       )}
+
     </div>
   );
 }
