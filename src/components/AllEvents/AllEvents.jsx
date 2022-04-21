@@ -99,6 +99,8 @@ export default function AllEvents({ userInput, addSelectedEvent }) {
   console.log("this is the result:", allEvents);
   console.log("this is the new result: ", localStorage.getItem("somethingNew"));
 
+  let handleAdd = (e) => {};
+
   return (
     <div>
       <h1>These are a list of the events:</h1>
