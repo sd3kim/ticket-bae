@@ -4,9 +4,9 @@ import AllEvents from "../../components/AllEvents/AllEvents";
 
 function SearchFeature(props) {
   const [userInput, setUserInput] = useState({
-    name: "",
+    name: [],
     // location: "",
-    date: "",
+    date: [],
   });
 
   let handleChange = (e) => {
