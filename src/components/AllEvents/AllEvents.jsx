@@ -28,16 +28,9 @@ export default function AllEvents({ userInput }) {
           list.push(eventNameMapped[i]);
           setEvent({ event: eventNameMapped[i], date: eventDate[i] });
           console.log("all events", eventNameMapped[i], eventDate[i]);
+
           // console.log(eventNameMapped[i]);
           // no event name and only date
-          // } else if (savedEventName.length > 0 || savedEventDate.length === 0) {
-          //   let eventMatched = eventNameMapped[i];
-          //   console.log(eventMat);
-        } else if (
-          savedEventName === eventNameMapped[i] &&
-          savedEventDate.length === 0
-        ) {
-          setEvent({ event: savedEventName, date: eventDate[i] });
         } else if (
           savedEventName.length === 0 &&
           savedEventDate === eventDate[i]
@@ -66,6 +59,11 @@ export default function AllEvents({ userInput }) {
           // if the given date doesn't match
           // code here
           // if name AND date matches:
+        } else if (
+          savedEventName === eventNameMapped[i] &&
+          savedEventDate.length === 0
+        ) {
+          setEvent({ event: savedEventName, date: eventDate[i] });
         } else if (
           savedEventName === eventNameMapped[i] &&
           savedEventDate === eventDate[i]
@@ -145,7 +143,7 @@ export default function AllEvents({ userInput }) {
           )
         : // ))
           event.event}
-      {/* )} */}
+      {/*  )} */}
     </div>
   );
 }
