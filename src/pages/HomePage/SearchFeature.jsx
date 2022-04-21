@@ -1,6 +1,5 @@
 import { Route, Routes, useNavigate } from "react-router";
 import { useState } from "react";
-import AllEvents from "../../components/AllEvents/AllEvents";
 
 function SearchFeature(props) {
   const [userInput, setUserInput] = useState({
