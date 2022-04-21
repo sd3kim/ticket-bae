@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from "react";
-import "../AllEvents/AllEvents.css";
-
-export default function AllEvents({ userInput, addSelectedEvent }) {
+import { useNavigate } from "react-router-dom";
+export default function AllEvents({ userInput }) {
   const [event, setEvent] = useState([]);
 
   let allEvents = [];
   let allEvents2 = [];
   let noArtistsRightDate = [];
+  let noArtistsRightDate2 = [];
   let artistsNoDate = [];
   let artistsWrongDate = [];
-
-  let artistName = [];
 
   useEffect(() => {
     async function fetchData() {
@@ -29,7 +27,7 @@ export default function AllEvents({ userInput, addSelectedEvent }) {
       for (let i = 0; i < eventNameMapped.length; i++) {
         // if no input for name or date is given:
         if (savedEventName.length === 0 && savedEventDate.length === 0) {
-          allEvents.push({ name: eventNameMapped[i], date: eventDate[i] });
+          allEvents.push(eventNameMapped[i] + "--" + eventDate[i]);
 
           // no event name and only date AND date exists
         } else if (
@@ -38,10 +36,7 @@ export default function AllEvents({ userInput, addSelectedEvent }) {
         ) {
           let eventMatched = eventNameMapped[i];
           console.log("empty input and only date", eventMatched);
-          noArtistsRightDate.push({
-            name: eventNameMapped[i],
-            date: eventDate[i],
-          });
+          noArtistsRightDate.push(eventNameMapped[i] + "--" + +eventDate[i]);
           // no event name and only date BUT date doesn't exist
         } else if (
           savedEventName.length === 0 &&
@@ -54,7 +49,7 @@ export default function AllEvents({ userInput, addSelectedEvent }) {
           savedEventName === eventNameMapped[i] &&
           savedEventDate.length === 0
         ) {
-          artistsNoDate.push({ name: eventNameMapped[i], date: eventDate[i] });
+          artistsNoDate.push(eventNameMapped[i] + "--" + eventDate[i]);
         }
         // if there is an artist but they are not playing on that specific day
         else if (
@@ -62,10 +57,7 @@ export default function AllEvents({ userInput, addSelectedEvent }) {
           savedEventDate !== eventDate[i]
         ) {
           //add a message saying artist is not playing on this date but these are the alternatives
-          artistsWrongDate.push({
-            name: eventNameMapped[i],
-            date: eventDate[i],
-          });
+          artistsWrongDate.push(eventNameMapped[i] + "--" + eventDate[i]);
         } else {
           setEvent({ allEvents2: "no event found" });
           console.log("no events found");
@@ -92,69 +84,43 @@ export default function AllEvents({ userInput, addSelectedEvent }) {
     }
     fetchData();
   }, []);
-
   console.log("result:", event.allEvents, " date: ", event.allEvents2);
   console.log("result2:", event.noArtistsRightDate);
 
   console.log("this is the result:", allEvents);
   console.log("this is the new result: ", localStorage.getItem("somethingNew"));
 
-  let handleAdd = (e) => {
+  let handleClick = (e) => {
     let evt = e.target.value;
     console.log("this is evt ", evt);
     storage.push(evt);
     console.log("storage", storage);
     localStorage.setItem("saved", storage);
   };
-
+  let storage = [];
+  console.log(storage, "torage");
   return (
     <div>
-      <h1>These are a list of the events:</h1>
+      These are a list of the events:
       <div>
         {event.allEvents &&
-          event.allEvents.map((event) => (
+          event.allEvents.map((eventItem) => (
             <li>
-              {event.name}--{event.date}
-              <button
-                onClick={handleAdd}
-                value={event}
-                name={event.name}
-                date={event.date}
-              >
-                ADD TO SHOW LIST
+              {eventItem}
+              <button onClick={handleClick} value={eventItem}>
+                Save Event
               </button>
             </li>
           ))}
 
         {event.noArtistsRightDate &&
-          event.noArtistsRightDate.map((event) => (
-            <li>
-              {event.name}--{event.date}
-              <button onClick={handleAdd} name={event.name} date={event.date}>
-                ADD TO SHOW LIST
-              </button>
-            </li>
-          ))}
+          event.noArtistsRightDate.map((eventItem) => <li>{eventItem}</li>)}
 
         {event.artistsNoDate &&
-          event.artistsNoDate.map((event) => (
-            <li>
-              {event.name}--{event.date}
-              <button onClick={handleAdd} name={event.name} date={event.date}>
-                ADD TO SHOW LIST
-              </button>
-            </li>
-          ))}
+          event.artistsNoDate.map((eventItem) => <li>{eventItem}</li>)}
 
         {event.artistsWrongDate &&
-          event.artistsWrongDate.map((event) => (
-            <li>
-              {event.name}--{event.date}
-              <button onClick={handleAdd} name={event.name} date={event.date}>
-                ADD TO SHOW LIST
-              </button>
-            </li>
-          ))}
+          event.artistsWrongDate.map((eventItem) => <li>{eventItem}</li>)}
       </div>
     </div>
   );
