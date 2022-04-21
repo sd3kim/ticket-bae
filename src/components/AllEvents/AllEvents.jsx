@@ -21,7 +21,6 @@ export default function AllEvents({ userInput }) {
       // console.log("saved event date", savedEventDate);
       // console.log("saved event mapped", eventNameMapped);
 
-
       for (let i = 0; i < eventNameMapped.length; i++) {
         // if no input for name or date is given:
         if (savedEventName.length === 0 && savedEventDate.length === 0) {
@@ -31,6 +30,14 @@ export default function AllEvents({ userInput }) {
           console.log("all events", eventNameMapped[i], eventDate[i]);
           // console.log(eventNameMapped[i]);
           // no event name and only date
+          // } else if (savedEventName.length > 0 || savedEventDate.length === 0) {
+          //   let eventMatched = eventNameMapped[i];
+          //   console.log(eventMat);
+        } else if (
+          savedEventName === eventNameMapped[i] &&
+          savedEventDate.length === 0
+        ) {
+          setEvent({ event: savedEventName, date: eventDate[i] });
         } else if (
           savedEventName.length === 0 &&
           savedEventDate === eventDate[i]
@@ -48,12 +55,12 @@ export default function AllEvents({ userInput }) {
         ) {
           console.log("no events");
 
-//       for (let i = 0; i < eventNameMapped.length; i++) {
-//         // if no input for name or date is given:
-//         if (savedEventName.length === 0 && savedEventDate.length === 0) {
-//           setEvent({ event: eventName });
-//           // if the given name doesn't match
-//         } else if (savedEventName !== eventNameMapped[i]) {
+          //       for (let i = 0; i < eventNameMapped.length; i++) {
+          //         // if no input for name or date is given:
+          //         if (savedEventName.length === 0 && savedEventDate.length === 0) {
+          //           setEvent({ event: eventName });
+          //           // if the given name doesn't match
+          //         } else if (savedEventName !== eventNameMapped[i]) {
 
           setEvent({ event: "there are no events" });
           // if the given date doesn't match
@@ -63,7 +70,6 @@ export default function AllEvents({ userInput }) {
           savedEventName === eventNameMapped[i] &&
           savedEventDate === eventDate[i]
         ) {
-
           // const eventFilterName = eventNameMapped.filter(
           //   (el) => el.indexOf(savedEventName) > -1
           // );
@@ -79,15 +85,14 @@ export default function AllEvents({ userInput }) {
           );
           // return;
 
-//           const eventFilterName = eventNameMapped.filter(
-//             (el) => el.indexOf(savedEventName) > -1
-//           );
-//           // const eventFilterDate = eventDate.filter(
-//           //   (el) => el.indexOf(savedEventDate) > -1
-//           // );
-//           setEvent({ event: eventFilterName, date: savedEventDate });
-//           return;
-
+          //           const eventFilterName = eventNameMapped.filter(
+          //             (el) => el.indexOf(savedEventName) > -1
+          //           );
+          //           // const eventFilterDate = eventDate.filter(
+          //           //   (el) => el.indexOf(savedEventDate) > -1
+          //           // );
+          //           setEvent({ event: eventFilterName, date: savedEventDate });
+          //           return;
         }
       }
     }
@@ -132,16 +137,15 @@ export default function AllEvents({ userInput }) {
           )
         : localStorage.getItem("userInput") &&
           !localStorage.getItem("userInputDate")
-        ? event.date &&
-          event.date.map((el) => (
+        ? event.date && (
+            // event.date.map((el) => (
             <li>
-              {event.event}, {el.date}
+              {event.event}, {event.date}
             </li>
-          ))
-        : event.event}
-
-//       )}
-
+          )
+        : // ))
+          event.event}
+      {/* )} */}
     </div>
   );
 }
