@@ -3,9 +3,9 @@ import { useState } from "react";
 
 function SearchFeature(props) {
   const [userInput, setUserInput] = useState({
-    name: "",
+    name: [],
     // location: "",
-    date: "",
+    date: [],
   });
 
   let handleChange = (e) => {

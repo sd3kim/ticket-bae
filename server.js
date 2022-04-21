@@ -3,6 +3,8 @@ var path = require("path");
 var logger = require("morgan");
 require("dotenv").config();
 require("./backend/config/database");
+var bodyParser = require("body-parser");
+require("body-parser-zlib")(bodyParser);
 
 const app = express();
 require("./backend/config/database");
