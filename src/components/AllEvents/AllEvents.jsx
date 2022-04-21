@@ -10,8 +10,6 @@ export default function AllEvents({ userInput }) {
   let artistsNoDate = [];
   let artistsWrongDate = [];
 
-  const [event2, setEvent2] = useState([]);
-
   useEffect(() => {
     async function fetchData() {
       const response = await fetch(
@@ -22,21 +20,15 @@ export default function AllEvents({ userInput }) {
       const eventName = showEvents._embedded.events;
       const eventDateMapped = eventName.map((el) => el.dates);
       const eventDate = eventDateMapped.map((el) => el.start.localDate);
-      // console.log("event date", eventDate);
       const eventNameMapped = eventName.map((el) => el.name);
       const savedEventName = localStorage.getItem("userInput");
       const savedEventDate = localStorage.getItem("userInputDate");
-      // console.log("saved event name", savedEventName);
-      // console.log("saved event date", savedEventDate);
-      // console.log("saved event mapped", eventNameMapped);
-      // debugger;
+
       for (let i = 0; i < eventNameMapped.length; i++) {
         // if no input for name or date is given:
         if (savedEventName.length === 0 && savedEventDate.length === 0) {
-          allEvents.push(eventNameMapped[i]);
-          allEvents2.push(eventDate[i]);
-          setEvent({ event: eventNameMapped[i], date: eventDate[i] });
-          // console.log("showing all events", eventNameMapped[i], eventDate[i]);
+          allEvents.push(eventNameMapped[i], eventDate[i]);
+
           // no event name and only date AND date exists
         } else if (
           savedEventName.length === 0 &&
@@ -44,8 +36,7 @@ export default function AllEvents({ userInput }) {
         ) {
           let eventMatched = eventNameMapped[i];
           console.log("empty input and only date", eventMatched);
-          noArtistsRightDate.push(eventNameMapped[i]);
-          noArtistsRightDate2.push(eventDate[i]);
+          noArtistsRightDate.push(eventNameMapped[i], eventDate[i]);
           // no event name and only date BUT date doesn't exist
         } else if (
           savedEventName.length === 0 &&
@@ -58,28 +49,18 @@ export default function AllEvents({ userInput }) {
           savedEventName === eventNameMapped[i] &&
           savedEventDate.length === 0
         ) {
-          artistsNoDate.push(eventDate[i]);
+          artistsNoDate.push(eventNameMapped[i], eventDate[i]);
         }
         // if there is an artist but they are not playing on that specific day
         else if (
           savedEventName === eventNameMapped[i] &&
           savedEventDate !== eventDate[i]
         ) {
-          artistsWrongDate.push(eventDate[i]);
-        }
-        // if the inputted event name exists, and it is on the selected date:
-        else if (
-          savedEventName === eventNameMapped[i] &&
-          savedEventDate.length === 0
-        ) {
-          setEvent({ event: savedEventName, date: eventDate[i] });
-        } else if (
-          savedEventName === eventNameMapped[i] &&
-          savedEventDate === eventDate[i]
-        ) {
-          console.log("the given artist is playing on the given date");
-        } else if (savedEventName !== eventNameMapped[i]) {
-          console.log(`${savedEventName} does not exist`);
+          //add a message saying artist is not playing on this date but these are the alternatives
+          artistsWrongDate.push(eventNameMapped[i], eventDate[i]);
+        } else {
+          setEvent({ allEvents2: "no event found" });
+          console.log("no events found");
         }
       }
 
@@ -96,9 +77,7 @@ export default function AllEvents({ userInput }) {
       setEvent({
         noArtistsRightDate: noArtistsRightDate,
         artistsNoDate: artistsNoDate,
-      });
-
-      setEvent2({
+        artistsWrongDate: artistsWrongDate,
         allEvents: allEvents,
         allEvents2: allEvents2,
       });
@@ -116,8 +95,8 @@ export default function AllEvents({ userInput }) {
     <div>
       These are a list of the events:
       <div>
-        {event2.allEvents &&
-          event2.allEvents.map((result2) => <li>{result2}</li>)}
+        {event.allEvents &&
+          event.allEvents.map((result2) => <li>{result2}</li>)}
 
         {event.noArtistsRightDate &&
           event.noArtistsRightDate.map((result2) => <li>{result2}</li>)}
@@ -125,30 +104,8 @@ export default function AllEvents({ userInput }) {
         {event.artistsNoDate &&
           event.artistsNoDate.map((result2) => <li>{result2}</li>)}
 
-        {/* if empty artist and empty date is true, print out the event name and date */}
-        {/* {!localStorage.getItem("userInput") &&
-        !localStorage.getItem("userInputDate")
-          ? event.event && (
-              <li>
-                Event: {event.event} - Event Date: {event.date}
-              </li>
-            )
-          : // if empty user and selected date, print out the associated events and date
-          !localStorage.getItem("userInput") &&
-            localStorage.getItem("userInputDate")
-          ? event.event && (
-              <li>
-                Event: {event.event} - Event Date: {event.date}
-              </li>
-            )
-          : localStorage.getItem("userInput") &&
-            !localStorage.getItem("userInputDate")
-          ? event.date && (
-              <li>
-                Event: {event.event} - Event Date: {event.date}
-              </li>
-            )
-          : event.event} */}
+        {event.artistsWrongDate &&
+          event.artistsWrongDate.map((result2) => <li>{result2}</li>)}
       </div>
     </div>
   );
