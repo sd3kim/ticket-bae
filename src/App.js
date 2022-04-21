@@ -16,6 +16,7 @@ class App extends React.Component {
   setUserInState = (incomingUserData) => {
     this.setState({ user: incomingUserData });
   };
+
   componentDidMount = () => {
     let token = localStorage.getItem("token");
     if (token) {
