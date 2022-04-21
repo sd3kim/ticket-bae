@@ -27,7 +27,7 @@ export default function AllEvents({ userInput }) {
       for (let i = 0; i < eventNameMapped.length; i++) {
         // if no input for name or date is given:
         if (savedEventName.length === 0 && savedEventDate.length === 0) {
-          allEvents.push(eventNameMapped[i], eventDate[i]);
+          allEvents.push(eventNameMapped[i] + "--" + eventDate[i]);
 
           // no event name and only date AND date exists
         } else if (
@@ -36,7 +36,7 @@ export default function AllEvents({ userInput }) {
         ) {
           let eventMatched = eventNameMapped[i];
           console.log("empty input and only date", eventMatched);
-          noArtistsRightDate.push(eventNameMapped[i], eventDate[i]);
+          noArtistsRightDate.push(eventNameMapped[i] + "--" + +eventDate[i]);
           // no event name and only date BUT date doesn't exist
         } else if (
           savedEventName.length === 0 &&
@@ -49,7 +49,7 @@ export default function AllEvents({ userInput }) {
           savedEventName === eventNameMapped[i] &&
           savedEventDate.length === 0
         ) {
-          artistsNoDate.push(eventNameMapped[i], eventDate[i]);
+          artistsNoDate.push(eventNameMapped[i] + "--" + eventDate[i]);
         }
         // if there is an artist but they are not playing on that specific day
         else if (
@@ -57,7 +57,7 @@ export default function AllEvents({ userInput }) {
           savedEventDate !== eventDate[i]
         ) {
           //add a message saying artist is not playing on this date but these are the alternatives
-          artistsWrongDate.push(eventNameMapped[i], eventDate[i]);
+          artistsWrongDate.push(eventNameMapped[i] + "--" + eventDate[i]);
         } else {
           setEvent({ allEvents2: "no event found" });
           console.log("no events found");
