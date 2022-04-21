@@ -70,6 +70,11 @@ export default function AllEvents({ userInput }) {
         // if the inputted event name exists, and it is on the selected date:
         else if (
           savedEventName === eventNameMapped[i] &&
+          savedEventDate.length === 0
+        ) {
+          setEvent({ event: savedEventName, date: eventDate[i] });
+        } else if (
+          savedEventName === eventNameMapped[i] &&
           savedEventDate === eventDate[i]
         ) {
           console.log("the given artist is playing on the given date");
@@ -109,6 +114,7 @@ export default function AllEvents({ userInput }) {
 
   return (
     <div>
+
       These are a list of the events:
       <div>
         {event2.allEvents &&
