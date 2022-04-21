@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import { useNavigate } from "react-router-dom";
 export default function AllEvents({ userInput }) {
   const [event, setEvent] = useState([]);
 
@@ -27,7 +27,7 @@ export default function AllEvents({ userInput }) {
       for (let i = 0; i < eventNameMapped.length; i++) {
         // if no input for name or date is given:
         if (savedEventName.length === 0 && savedEventDate.length === 0) {
-          allEvents.push(eventNameMapped[i], eventDate[i]);
+          allEvents.push(eventNameMapped[i] + eventDate[i]);
 
           // no event name and only date AND date exists
         } else if (
@@ -36,7 +36,7 @@ export default function AllEvents({ userInput }) {
         ) {
           let eventMatched = eventNameMapped[i];
           console.log("empty input and only date", eventMatched);
-          noArtistsRightDate.push(eventNameMapped[i], eventDate[i]);
+          noArtistsRightDate.push(eventNameMapped[i] + eventDate[i]);
           // no event name and only date BUT date doesn't exist
         } else if (
           savedEventName.length === 0 &&
@@ -57,7 +57,7 @@ export default function AllEvents({ userInput }) {
           savedEventDate !== eventDate[i]
         ) {
           //add a message saying artist is not playing on this date but these are the alternatives
-          artistsWrongDate.push(eventNameMapped[i], eventDate[i]);
+          artistsWrongDate.push(eventNameMapped[i] + eventDate[i]);
         } else {
           setEvent({ allEvents2: "no event found" });
           console.log("no events found");
@@ -95,8 +95,7 @@ export default function AllEvents({ userInput }) {
     <div>
       These are a list of the events:
       <div>
-        {event.allEvents &&
-          event.allEvents.map((result2) => <li>{result2}</li>)}
+        {event.allEvents && event.allEvents.map((result2) => <p>{result2}</p>)}
 
         {event.noArtistsRightDate &&
           event.noArtistsRightDate.map((result2) => <li>{result2}</li>)}
