@@ -99,7 +99,13 @@ export default function AllEvents({ userInput, addSelectedEvent }) {
   console.log("this is the result:", allEvents);
   console.log("this is the new result: ", localStorage.getItem("somethingNew"));
 
-  let handleAdd = (e) => {};
+  let handleAdd = (e) => {
+    let evt = e.target.value;
+    console.log("this is evt ", evt);
+    storage.push(evt);
+    console.log("storage", storage);
+    localStorage.setItem("saved", storage);
+  };
 
   return (
     <div>
@@ -109,7 +115,12 @@ export default function AllEvents({ userInput, addSelectedEvent }) {
           event.allEvents.map((event) => (
             <li>
               {event.name}--{event.date}
-              <button onClick={handleAdd} name={event.name} date={event.date}>
+              <button
+                onClick={handleAdd}
+                value={event}
+                name={event.name}
+                date={event.date}
+              >
                 ADD TO SHOW LIST
               </button>
             </li>
