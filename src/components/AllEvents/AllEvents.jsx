@@ -26,7 +26,10 @@ export default function AllEvents({ userInput }) {
         if (savedEventName.length === 0 && savedEventDate.length === 0) {
           let list = [];
           list.push(eventNameMapped[i]);
-          setEvent({ event: eventNameMapped[i], date: eventDate[i] });
+          setEvent({
+            event: eventNameMapped[i],
+            date: eventDate[i],
+          });
           console.log("all events", eventNameMapped[i], eventDate[i]);
 
           // console.log(eventNameMapped[i]);
