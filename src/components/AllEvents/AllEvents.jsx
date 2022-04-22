@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 export default function AllEvents({ userInput }) {
   const [event, setEvent] = useState([]);
+  const [items, setItems] = useState([]);
 
   let allEvents = [];
   let allEvents2 = [];
@@ -103,22 +104,26 @@ export default function AllEvents({ userInput }) {
     // navigate("/savedshows");
   };
 
-  // handleCheckout = async () => {
-  //   try {
-  //     let jwt = localStorage.getItem('token')
-  //     let fetchResponse = await fetch("/api/orders", {
-  //       method: "POST",
-  //       headers: {"Content-Type": "application/json",'Authorization': 'Bearer ' + jwt},
-  //       body: JSON.stringify({lineItems: this.state.lineItems}) // <-- send this object to server
-  //       })
-  //     let serverResponse = await fetchResponse.json() // <-- decode fetch response
-  //     console.log("Success:", serverResponse)   // <-- log server response
-
-  //     this.setState({lineItems: []}) // if order sent without errors, set state to empty
-  //   } catch (err) {
-  //     console.error("Error:", err) // <-- log if error
-  //   }
-  // }
+  let handleCheckout = async () => {
+    try {
+      let jwt = localStorage.getItem("token");
+      let fetchResponse = await fetch("/api/savedShows/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + jwt,
+        },
+        body: JSON.stringify({ items: items.items }), // <-- send this object to server
+      });
+      let serverResponse = await fetchResponse.json(); // <-- decode fetch response
+      console.log("this is fetchResponse", fetchResponse);
+      console.log("Success:", serverResponse); // <-- log server response
+      console.log("this is serverResponse", serverResponse);
+      setItems({ items: [] }); // if order sent without errors, set state to empty
+    } catch (err) {
+      console.error("Error:", err); // <-- log if error
+    }
+  };
 
   let storage = [];
   return (
@@ -129,7 +134,7 @@ export default function AllEvents({ userInput }) {
           event.allEvents.map((result2) => (
             <li>
               {result2}
-              <button onClick={handleClick} value={result2}>
+              <button onClick={handleCheckout} value={result2}>
                 Save Event
               </button>
             </li>
