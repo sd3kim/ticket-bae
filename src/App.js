@@ -47,15 +47,23 @@ class App extends React.Component {
           <div>
             <div className="log">
               <Nav />
-              <UserLogOut
+              {/* <UserLogOut
                 setUserInState={this.setUserInState}
                 user={this.state.user}
-              />
+              /> */}
             </div>
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/allEvents" element={<AllEvents />} />
-              <Route path="/profile" element={<ProfilePage />} />
+              <Route
+                path="/profile"
+                element={
+                  <ProfilePage
+                    setUserInState={this.setUserInState}
+                    user={this.state.user}
+                  />
+                }
+              />
               <Route path="/savedShows" element={<SavedShowsPage />} />
             </Routes>
           </div>
