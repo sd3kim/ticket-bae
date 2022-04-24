@@ -19,10 +19,14 @@ async function index(req, res) {
 
 async function create(req, res) {
   try {
-    await savedShowsModel.create({ items: req.body.items, user: req.user._id });
-    console.log(req.body.items);
+    await savedShowsModel.create({
+      savedItem: req.body.savedItem,
+      user: req.user._id,
+    });
+    console.log(req.body.savedItem);
     res.status(200).json("ok");
   } catch (err) {
+    console.log("this is err", err);
     res.status(400).json(err);
   }
 }
