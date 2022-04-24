@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const savedShowsCtrl = require("../../controllers/savedShow");
+const savedShowsCtrl = require("../../controllers/savedShows");
 
 router.post("/", savedShowsCtrl.create);
 
