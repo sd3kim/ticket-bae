@@ -1,6 +1,5 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-// import BaseSelect from "react-select";
 
 class SearchFeature extends React.Component {
   allEvents = [];
