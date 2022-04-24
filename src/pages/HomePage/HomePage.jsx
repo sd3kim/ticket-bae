@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 // import AllEvents from "../../components/AllEvents/AllEvents";
 import SearchFeature from "./SearchFeature";
+import "../HomePage/HomePage.css";
 
 export default function HomePage() {
   return (
-    <div>
+    <div className="container">
       <h1>TicketBae</h1>
       <SearchFeature />
-      <footer style={{ color: "red" }}>
-        Note: a location must be entered to complete a search
+      <footer>
+        <b>Please Note: </b>a location <b>must</b> be entered to complete a
+        search
       </footer>
     </div>
   );
