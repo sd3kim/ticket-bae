@@ -9,7 +9,7 @@ class SearchFeature extends React.Component {
     date: "",
     location: "",
     event: "",
-    eventDate: "",
+    savedItem: "",
   };
   // options = [
   //   { value: this.state.location, label: "Toronto" },
@@ -209,14 +209,34 @@ class SearchFeature extends React.Component {
         this.setState({ event: "no Events on selected city" });
       }
     }
-    // console.log(showEvents);
   };
   handleChange = (e) => {
     if (e.target.name || e.target.date === "" || e.target.location === "")
       this.setState({ ...this.state, [e.target.name]: e.target.value });
   };
+
+  // handleSave = async () => {
+  //   try {
+  //     let jwt = localStorage.getItem("token");
+  //     let fetchResponse = await fetch("/api/savedShows/", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         Authorization: "Bearer " + jwt,
+  //       },
+  //       body: JSON.stringify({ savedItem: this.state.savedItem }),
+  //     });
+  //     let serverResponse = await fetchResponse.json();
+  //     console.log("this is fetchResponse", fetchResponse);
+  //     console.log("Success:", serverResponse);
+  //     console.log("this is serverResponse", serverResponse);
+  //     this.setState({ savedItem: this.state.savedItem });
+  //   } catch (err) {
+  //     console.error("Error:", err);
+  //   }
+  // };
+
   render() {
-    // const required = (value) => (value ? "Required" : undefined);
     return (
       <div>
         <div className="searchbar">
@@ -231,75 +251,6 @@ class SearchFeature extends React.Component {
               ></input>
             </label>
             <label>
-              {/* <select isSearchable validate={required}>
-                <option></option>
-                <option
-                  value={this.state.location}
-                  onChange={this.handleChange}
-                >
-                  Toronto
-                </option>
-                <option
-                  value={this.state.location}
-                  onChange={this.handleChange}
-                >
-                  Hamilton
-                </option>
-                <option
-                  value={this.state.location}
-                  onChange={this.handleChange}
-                >
-                  Quebec
-                </option>
-                <option
-                  value={this.state.location}
-                  onChange={this.handleChange}
-                >
-                  Vancouver
-                </option>
-                <option
-                  value={this.state.location}
-                  onChange={this.handleChange}
-                >
-                  Ottawa
-                </option>
-                <option
-                  value={this.state.location}
-                  onChange={this.handleChange}
-                >
-                  Calgary
-                </option>
-                <option
-                  value={this.state.location}
-                  onChange={this.handleChange}
-                >
-                  Winnipeg
-                </option>
-                <option
-                  value={this.state.location}
-                  onChange={this.handleChange}
-                >
-                  Edmonton
-                </option>
-                <option
-                  value={this.state.location}
-                  onChange={this.handleChange}
-                >
-                  Victoria
-                </option>
-                <option
-                  value={this.state.location}
-                  onChange={this.handleChange}
-                >
-                  Regina
-                </option>
-                <option
-                  value={this.state.location}
-                  onChange={this.handleChange}
-                >
-                  Brampton
-                </option>
-              </select> */}
               <input
                 type="text"
                 value={this.state.location}
@@ -308,13 +259,15 @@ class SearchFeature extends React.Component {
                 required
               ></input>
             </label>
-            <input
-              type="datetime-local"
-              id="meeting-time"
-              name="date"
-              value={this.state.date}
-              onChange={this.handleChange}
-            ></input>
+            <label>
+              <input
+                type="datetime-local"
+                id="meeting-time"
+                name="date"
+                value={this.state.date}
+                onChange={this.handleChange}
+              ></input>
+            </label>
             <Routes>
               <Route
                 path="/"
@@ -329,7 +282,13 @@ class SearchFeature extends React.Component {
         </div>
         <div>
           <div key={this.state.date}>{this.state.event}</div>
-          {this.allEvents && this.allEvents.map((event) => <li>{event}</li>)}
+          {this.allEvents &&
+            this.allEvents.map((event) => (
+              <li>
+                {event}
+                <button onClick={this.handleSave}>Save Event</button>
+              </li>
+            ))}
         </div>
       </div>
     );

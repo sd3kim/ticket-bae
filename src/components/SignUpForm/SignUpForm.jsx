@@ -6,13 +6,11 @@ export default class SignUpForm extends Component {
     email: "",
     password: "",
     confirm: "",
-    error: "",
   };
 
   handleChange = (evt) => {
     this.setState({
       [evt.target.name]: evt.target.value,
-      error: "",
     });
   };
 

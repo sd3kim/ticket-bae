@@ -3,11 +3,11 @@ const Schema = mongoose.Schema;
 
 const savedShowsSchema = new Schema(
   {
-    items: [
+    savedItem: [
       {
         events: {
           name: String,
-          //   date: { type: Schema.Types.ObjectId, ref: "Category" },
+          _id: { type: Schema.Types.ObjectId, ref: "TicketBae" },
         },
       },
     ],
@@ -18,5 +18,5 @@ const savedShowsSchema = new Schema(
   }
 );
 
-let savedShowsModel = mongoose.model("SavedShow", savedShowsSchema); // .model compiles the schema into a model
+let savedShowsModel = mongoose.model("SavedShow", savedShowsSchema);
 module.exports = savedShowsModel;
