@@ -62,6 +62,9 @@ class SearchFeature extends React.Component {
     ) {
       this.allEvents = [];
       console.log("event and no date nad location");
+      this.setState({
+        event: `${this.state.name} has no upcoming shows in ${this.state.location}`,
+      });
       const response = await fetch(
         `
         https://app.ticketmaster.com/discovery/v2/events?apikey=efomLcpWJQWbkN9TXlGgmOc98CZzZgkh&keyword=${this.state.name}&locale=*&size=150&city=${this.state.location}&countryCode=CA&segmentId=KZFzniwnSyZfZ7v7nJ`
@@ -101,7 +104,7 @@ class SearchFeature extends React.Component {
             } else {
               this.allEvents = [];
               this.setState({
-                event: `${this.state.name} has no upcoming shows`,
+                event: `${this.state.name} has no upcoming shows in ${this.state.location}`,
               });
               console.log("no matched", eventDate[i]);
             }
@@ -109,7 +112,9 @@ class SearchFeature extends React.Component {
         }
       } else {
         this.allEvents = [];
-        this.setState({ event: `${this.state.name} has no upcoming shows` });
+        this.setState({
+          event: `${this.state.name} has no upcoming shows in ${this.state.location}`,
+        });
       }
     } else if (
       this.state.name.length !== 0 &&
@@ -157,7 +162,7 @@ class SearchFeature extends React.Component {
         } else {
           this.allEvents = [];
           this.setState({
-            event: `There are no upcoming events on ${this.state.date}`,
+            event: `There are no upcoming events on ${this.state.date} in ${this.state.location}`,
           });
           console.log("no matched", eventNameMapped[i], eventDate[i]);
         }
@@ -202,14 +207,14 @@ class SearchFeature extends React.Component {
 
           console.log("All events in searched city: ", this.allEvents);
           this.setState({
-            event: `There are all the upcoming events in ${this.state.location}`,
+            event: `These are all the upcoming events in ${this.state.location}`,
           });
           console.log(this.state.event);
         }
       } else {
         this.allEvents = [];
         this.setState({
-          event: `There are upcoming events in ${this.state.location}`,
+          event: `These are upcoming events in ${this.state.location}`,
         });
       }
     }

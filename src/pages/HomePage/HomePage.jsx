@@ -7,6 +7,9 @@ export default function HomePage() {
     <div>
       <h1>TicketBae</h1>
       <SearchFeature />
+      <footer style={{ color: "red" }}>
+        Note: a location must be entered to complete a search
+      </footer>
     </div>
   );
 }
