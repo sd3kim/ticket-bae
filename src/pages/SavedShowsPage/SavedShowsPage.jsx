@@ -7,20 +7,20 @@ export default class SavedShowsPage extends React.Component {
   // savedShows = [];
   // savedShows.push(localStorage.getItem("saved"));
 
-  //   async componentDidMount() {
-  //     try {
-  //       let jwt = localStorage.getItem("token");
-  //       let fetchOrdersResponse = await fetch("/api/savedShows", {
-  //         headers: { Authorization: "Bearer " + jwt },
-  //       });
-  //       if (!fetchOrdersResponse.ok) throw new Error("Couldn't fetch shows");
-  //       let shows = await fetchOrdersResponse.json();
-  //       console.log("shows", shows);
-  //       this.setState({ showHistory: shows });
-  //     } catch (err) {
-  //       console.error("ERROR:", err);
-  //     }
-  //   }
+  async componentDidMount() {
+    try {
+      let jwt = localStorage.getItem("token");
+      let fetchOrdersResponse = await fetch("/api/savedShows", {
+        headers: { Authorization: "Bearer " + jwt },
+      });
+      if (!fetchOrdersResponse.ok) throw new Error("Couldn't fetch shows");
+      let shows = await fetchOrdersResponse.json();
+      console.log("shows", shows);
+      this.setState({ showHistory: shows });
+    } catch (err) {
+      console.error("ERROR:", err);
+    }
+  }
   render() {
     return (
       <div>

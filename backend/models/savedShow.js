@@ -5,9 +5,10 @@ const savedShowsSchema = new Schema(
   {
     savedItem: [
       {
+        qty: Number,
         events: {
           name: String,
-          _id: { type: Schema.Types.ObjectId, ref: "TicketBae" },
+          // _id: { type: Schema.Types.ObjectId, ref: "TicketBae" },
         },
       },
     ],

@@ -1,0 +1,11 @@
+.container {
+  padding-bottom: 60px;
+}
+
+footer {
+  background-color: teal;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
