@@ -19,7 +19,7 @@ export default function Login(props) {
   async function handleSubmit(e) {
     e.preventDefault();
     const fetchResponse = await fetch("/api/users/login", {
-      method: "post",
+      method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         username: user.name,

@@ -3,11 +3,11 @@ const Schema = mongoose.Schema;
 
 const savedShowsSchema = new Schema(
   {
-    items: [
+    savedItem: [
       {
-        events: {
-          name: String,
-          //   date: { type: Schema.Types.ObjectId, ref: "Category" },
+        event: {
+          name: { type: String },
+          qty: Number,
         },
       },
     ],

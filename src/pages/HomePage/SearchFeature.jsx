@@ -8,7 +8,7 @@ class SearchFeature extends React.Component {
     date: "",
     location: "",
     event: "",
-    savedItem: "",
+    savedItem: [],
   };
 
   handleSubmit = async (e) => {
@@ -219,12 +219,33 @@ class SearchFeature extends React.Component {
       }
     }
   };
+
   handleChange = (e) => {
     if (e.target.name || e.target.date === "" || e.target.location === "")
       this.setState({ ...this.state, [e.target.name]: e.target.value });
   };
 
-  handleSave = async () => {
+  handleClick = async (incoming_item) => {
+    // let itemAlreadyExistsInCart = this.state.savedItem.some(
+    //   (obj) => obj.event.name === incoming_item.name
+    // );
+    // if (itemAlreadyExistsInCart) {
+    //   this.setState({
+    //     savedItem: this.state.savedItem.map((obj) =>
+    //       obj.event.name === incoming_item.name
+    //         ? { ...obj, qty: obj.qty + 1 }
+    //         : obj
+    //     ),
+    //   });
+    // } else {
+    this.setState({
+      // savedItem: [...this.state.savedItem, { qty: 1, event: incoming_item }],
+      savedItem: [...this.state.savedItem, { qty: 1, name: incoming_item }],
+    });
+  };
+
+  handleSave = async (evt) => {
+    // alert("ive been pressed");
     try {
       let jwt = localStorage.getItem("token");
       let fetchResponse = await fetch("/api/savedShows/", {
@@ -233,13 +254,15 @@ class SearchFeature extends React.Component {
           "Content-Type": "application/json",
           Authorization: "Bearer " + jwt,
         },
-        body: JSON.stringify({ savedItem: this.state.savedItem }),
+        body: JSON.stringify({
+          eventName: this.state.savedItem,
+        }),
       });
       let serverResponse = await fetchResponse.json();
       console.log("this is fetchResponse", fetchResponse);
       console.log("Success:", serverResponse);
-      console.log("this is serverResponse", serverResponse);
-      this.setState({ savedItem: this.state.savedItem });
+      // console.log("this is serverResponse", serverResponse);
+      this.setState({ savedItem: evt.target.value });
     } catch (err) {
       console.error("Error:", err);
     }
@@ -295,9 +318,12 @@ class SearchFeature extends React.Component {
             this.allEvents.map((event) => (
               <li>
                 {event}
-                <button onClick={this.handleSave}>Save Event</button>
+                <button onClick={this.handleSave} value={event}>
+                  Add Event
+                </button>
               </li>
             ))}
+          <button onClick={this.handleClick}>submit</button>
         </div>
       </div>
     );

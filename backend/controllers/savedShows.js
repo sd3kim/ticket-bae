@@ -1,10 +1,5 @@
 const savedShowsModel = require("../models/savedShow");
 
-module.exports = {
-  create,
-  index,
-};
-
 async function index(req, res) {
   try {
     let shows = await savedShowsModel
@@ -19,10 +14,18 @@ async function index(req, res) {
 
 async function create(req, res) {
   try {
-    await savedShowsModel.create({ items: req.body.items, user: req.user._id });
-    console.log(req.body.items);
+    await savedShowsModel.create({
+      savedItem: req.body.eventName,
+    });
+    console.log("message: ", req.body.eventName);
     res.status(200).json("ok");
   } catch (err) {
+    console.log("This is the controller error: ", err);
     res.status(400).json(err);
   }
 }
+
+module.exports = {
+  create,
+  index,
+};
