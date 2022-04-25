@@ -1,6 +1,5 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import "./SearchFeature.css";
 
 class SearchFeature extends React.Component {
   allEvents = [];
@@ -225,7 +224,6 @@ class SearchFeature extends React.Component {
     if (e.target.name || e.target.date === "" || e.target.location === "")
       this.setState({ ...this.state, [e.target.name]: e.target.value });
   };
-
 
   handleAdd = async (incoming_item) => {
     this.setState({
