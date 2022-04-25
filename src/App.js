@@ -9,7 +9,6 @@ import Nav from "./components/Navbar/Nav";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import SavedShowsPage from "./pages/SavedShowsPage/SavedShowsPage";
 import "bootstrap/dist/css/bootstrap.min.css";
-
 class App extends React.Component {
   state = {
     user: null,
@@ -48,10 +47,6 @@ class App extends React.Component {
           <div>
             <div className="log">
               <Nav />
-              {/* <UserLogOut
-                setUserInState={this.setUserInState}
-                user={this.state.user}
-              /> */}
             </div>
             <Routes>
               <Route path="/" element={<HomePage />} />

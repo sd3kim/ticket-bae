@@ -9,9 +9,8 @@ async function create(req, res) {
     const hashedPassword = await bcrypt.hash(req.body.password, SALT_ROUNDS);
     req.body.password = hashedPassword;
     const user = await User.create(req.body);
-
     const token = jwt.sign({ user }, process.env.SECRET, { expiresIn: "24h" });
-    res.status(200).json(token); // send it to the frontend
+    res.status(200).json(token);
   } catch (err) {
     console.log(err.message);
     res.status(400).json(err);

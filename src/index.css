@@ -15,31 +15,29 @@ a {
   text-decoration: none;
   color: black;
 }
-nav {
+.nav-wrapper {
+  display: grid;
+  grid-template-columns: 2fr 4fr;
+  justify-content: space-between;
+  gap: 600px;
   margin-top: 20px;
   margin-bottom: 40px;
 }
-.nav-wrapper {
-  display: flex;
-  justify-content: space-around;
-  margin-right: 100px;
-}
 .nav {
-  display: flex;
-  justify-content: end;
-  gap: 100px;
-  margin-left: 800px;
-}
-.log {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  margin-top: 10px;
+  justify-content: space-around;
 }
+
 img {
   height: 100px;
   width: 100px;
 }
-/* .inline {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-} */
+.button {
+  border: none;
+  background-color: white;
+}
+.tag > a {
+  text-decoration: none;
+  color: black;
+}

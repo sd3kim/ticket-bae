@@ -1,15 +1,12 @@
 import "./Login.css";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Button from "react-bootstrap/Button";
 
 export default function Login(props) {
   const [user, setUser] = useState({
     name: "",
     password: "",
   });
-
-  // const [error, setError] = useState(false);
 
   let navigate = useNavigate();
 
