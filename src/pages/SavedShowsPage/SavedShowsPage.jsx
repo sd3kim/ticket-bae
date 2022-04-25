@@ -3,6 +3,7 @@ import React from "react";
 export default class SavedShowsPage extends React.Component {
   state = {
     showHistory: [],
+    qty: [],
   };
 
   async componentDidMount() {
@@ -29,7 +30,14 @@ export default class SavedShowsPage extends React.Component {
         <br />
         <div>
           {this.state.showHistory.map((events) =>
-            events.savedItem.map((e) => <li>{e.name}</li>)
+            events.savedItem.map((e) => (
+              <li>
+                {e.name}
+                <button onClick={this.handleUpdate}>-</button>
+                {e.qty}
+                <button>+</button>
+              </li>
+            ))
           )}
         </div>
       </div>
