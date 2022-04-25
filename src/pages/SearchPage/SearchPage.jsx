@@ -11,6 +11,7 @@ class SearchFeature extends React.Component {
     location: "",
     event: "",
     savedItem: [],
+    hidden: false,
   };
 
   handleSearch = async (e) => {
@@ -201,6 +202,10 @@ class SearchFeature extends React.Component {
   };
 
   handleAdd = async (incoming_item) => {
+    this.setState({ hidden: true });
+    setTimeout(() => {
+      this.setState({ hidden: false });
+    }, 1000);
     let itemAlreadyExistsInCart = this.state.savedItem.some(
       (obj) => obj.name === incoming_item.target.value
     );
@@ -291,6 +296,9 @@ class SearchFeature extends React.Component {
               <button onClick={this.handleSave}>Save to Your Show List</button>
             </div>
           </div>
+        </div>
+        <div className={this.state.hidden ? "hidden" : "shown "}>
+          <h3>added to saved show list</h3>
         </div>
         <div>
           <br />
