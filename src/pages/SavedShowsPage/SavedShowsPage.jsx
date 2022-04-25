@@ -22,6 +22,7 @@ export default class SavedShowsPage extends React.Component {
       console.error("ERROR:", err);
     }
   }
+
   render() {
     return (
       <div>
