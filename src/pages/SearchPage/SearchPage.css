@@ -71,3 +71,14 @@ td {
   border-color: teal;
   border-radius: 5px;
 }
+
+button {
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: none;
+  font-size: 14px;
+}
+
+button:hover {
+  cursor: pointer;
+}
