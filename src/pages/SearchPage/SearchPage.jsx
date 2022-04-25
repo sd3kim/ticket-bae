@@ -1,5 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
+import "../SearchPage/SearchPage.css";
 
 class SearchFeature extends React.Component {
   allEvents = [];
@@ -174,9 +175,15 @@ class SearchFeature extends React.Component {
               " " +
               this.state.location
           );
-          this.setState({
-            event: `These are all the upcoming events in ${this.state.location}`,
-          });
+          if (this.state.location.length === 0) {
+            this.setState({
+              event: `These are all the upcoming events`,
+            });
+          } else {
+            this.setState({
+              event: `These are all the upcoming events in ${this.state.location}`,
+            });
+          }
         }
       } else {
         this.allEvents = [];
@@ -222,67 +229,75 @@ class SearchFeature extends React.Component {
 
   render() {
     return (
-      <div>
-        <div className="searchbar">
-          <form onSubmit={this.handleSearch}>
-            <label>
-              <input
-                type="text"
-                name="name"
-                placeholder="Artist"
-                value={this.state.name}
-                onChange={this.handleChange}
-              ></input>
-            </label>
-            <label>
-              <input
-                type="text"
-                value={this.state.location}
-                name="location"
-                placeholder="Location"
-                onChange={this.handleChange}
-              ></input>
-            </label>
-            <label>
-              <input
-                type="datetime-local"
-                id="meeting-time"
-                name="date"
-                value={this.state.date}
-                onChange={this.handleChange}
-              ></input>
-            </label>
-            <Routes>
-              <Route
-                path="/"
-                element={
-                  <button type="submit" onClick={this.handleSearch}>
-                    Search
-                  </button>
-                }
-              />
-            </Routes>
-          </form>
+      <div className="wrapper">
+        <div className="wrap">
+          <div className="search">
+            <div className="searchbar">
+              <form onSubmit={this.handleSearch}>
+                <label>
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Artist"
+                    value={this.state.name}
+                    onChange={this.handleChange}
+                  ></input>
+                </label>
+                <label>
+                  <input
+                    type="text"
+                    value={this.state.location}
+                    name="location"
+                    placeholder="Location"
+                    onChange={this.handleChange}
+                  ></input>
+                </label>
+                <label>
+                  <input
+                    type="datetime-local"
+                    id="meeting-time"
+                    name="date"
+                    value={this.state.date}
+                    onChange={this.handleChange}
+                  ></input>
+                </label>
+                <Routes>
+                  <Route
+                    path="/"
+                    element={
+                      <button type="submit" onClick={this.handleSearch}>
+                        Search
+                      </button>
+                    }
+                  />
+                </Routes>
+              </form>
+              <button onClick={this.handleSave}>Save to Your Show List</button>
+            </div>
+          </div>
         </div>
         <div>
-          <h4>{this.state.event}</h4>
-          {this.allEvents &&
-            this.allEvents.map((event) => (
-              <table>
-                {/* <tr>
+          <br />
+          <br />
+          <div className="wrap2">
+            <h4>{this.state.event}</h4>
+            {this.allEvents &&
+              this.allEvents.map((event) => (
+                <table>
+                  {/* <tr>
                   <th>Event:</th>
                 </tr> */}
-                <tr>
-                  <td>{event} </td>
-                  <td>
-                    <button onClick={this.handleAdd} value={event}>
-                      Add Event
-                    </button>
-                  </td>
-                </tr>
-              </table>
-            ))}
-          <button onClick={this.handleSave}>Save to Your Show List</button>
+                  <tr>
+                    <td>{event} </td>
+                    <td>
+                      <button onClick={this.handleAdd} value={event}>
+                        Add Event
+                      </button>
+                    </td>
+                  </tr>
+                </table>
+              ))}
+          </div>
         </div>
       </div>
     );
