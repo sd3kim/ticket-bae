@@ -2,7 +2,14 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import "../SearchPage/SearchPage.css";
 import { FcSearch } from "react-icons/fc";
-import { TextField, Table, TableHead, TableRow, Button } from "@mui/material";
+import {
+  Typography,
+  TextField,
+  Table,
+  TableHead,
+  TableRow,
+  Button,
+} from "@mui/material";
 
 class SearchFeature extends React.Component {
   allEvents = [];
@@ -206,7 +213,7 @@ class SearchFeature extends React.Component {
     this.setState({ hidden: true });
     setTimeout(() => {
       this.setState({ hidden: false });
-    }, 1000);
+    }, 2000);
     let itemAlreadyExistsInCart = this.state.savedItem.some(
       (obj) => obj.name === incoming_item.target.value
     );
@@ -262,7 +269,6 @@ class SearchFeature extends React.Component {
                   id="fullWidth"
                   type="text"
                   name="name"
-                  // placeholder="Artist"
                   value={this.state.name}
                   onChange={this.handleChange}
                 />
@@ -273,7 +279,6 @@ class SearchFeature extends React.Component {
                   type="text"
                   value={this.state.location}
                   name="location"
-                  // placeholder="Location"
                   onChange={this.handleChange}
                 />
                 <TextField
@@ -289,18 +294,19 @@ class SearchFeature extends React.Component {
                     path="/"
                     element={
                       <button type="submit" onClick={this.handleSearch}>
-                        <FcSearch />
+                        <h1>
+                          <FcSearch />
+                        </h1>
                       </button>
                     }
                   />
                 </Routes>
               </form>
-              <button onClick={this.handleSave}>Save to Your Show List</button>
+              <Button variant="outlined" onClick={this.handleSave}>
+                Save to Your Show List
+              </Button>
             </div>
           </div>
-        </div>
-        <div className={this.state.hidden ? "hidden" : "shown "}>
-          <h3>Added to Saved Show List</h3>
         </div>
         <div>
           <br />
@@ -309,17 +315,28 @@ class SearchFeature extends React.Component {
           <br />
           <br />
           <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <div className={this.state.hidden ? "hidden" : "shown "}>
+            <Typography variant="h5">Added to Saved Show List</Typography>
+          </div>
+
           <div className="wrap2">
-            <h4>{this.state.event}</h4>
+            <Typography variant="h5">{this.state.event}</Typography>
+            <span></span>
             {this.allEvents &&
               this.allEvents.map((event) => (
                 <Table>
-                  {/* <tr>
-                  <th>Event:</th>
-                </tr> */}
                   <TableHead>
                     <TableRow>
-                      <td>{event} </td>
+                      <td>
+                        <Typography variant="h7">{event}</Typography>
+                      </td>
                       <td>
                         <Button
                           variant="outlined"
