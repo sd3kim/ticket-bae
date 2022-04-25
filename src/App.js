@@ -8,7 +8,8 @@ import HomePage from "./pages/HomePage/HomePage";
 import Nav from "./components/Navbar/Nav";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import SavedShowsPage from "./pages/SavedShowsPage/SavedShowsPage";
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
+
 class App extends React.Component {
   state = {
     user: null,

@@ -6,25 +6,16 @@ import UserLogOut from "../UserLogOut/UserLogOut";
 function Nav() {
   let navigate = useNavigate();
   let clearPage = () => {
-    window.location.reload(true);
     navigate("/");
+    window.location.reload(true);
   };
   return (
     <div>
       <nav className="nav-wrapper">
         <div>
-          <Link to="/">TicketBae</Link>
-
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <button className="button" onClick={clearPage}>
-                  TicketBae
-                </button>
-              }
-            />
-          </Routes>
+          <button className="button" onClick={clearPage}>
+            TicketBae
+          </button>
         </div>
         <div className="nav">
           <div className="tag">
