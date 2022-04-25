@@ -5,11 +5,7 @@ const savedShowsSchema = new Schema(
   {
     savedItem: [
       {
-        qty: Number,
-        events: {
-          name: String,
-          // _id: { type: Schema.Types.ObjectId, ref: "TicketBae" },
-        },
+        name: String,
       },
     ],
     user: { type: Schema.Types.ObjectId, ref: "User" },

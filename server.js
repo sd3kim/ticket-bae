@@ -17,9 +17,9 @@ app.use(express.json());
 // app.use(favicon(path.join(__dirname, "build", "favicon.ico")));
 app.use(express.static(path.join(__dirname, "./frontend/build")));
 
-app.use("/api/artists", require("./backend/routes/api/artists"));
-app.use("/api/locations", require("./backend/routes/api/locations"));
-app.use("/api/dates", require("./backend/routes/api/dates"));
+// app.use("/api/artists", require("./backend/routes/api/artists"));
+// app.use("/api/locations", require("./backend/routes/api/locations"));
+// app.use("/api/dates", require("./backend/routes/api/dates"));
 app.use("/api/users", require("./backend/routes/api/users"));
 app.use("/api/savedShows", require("./backend/routes/api/savedShows"));
 

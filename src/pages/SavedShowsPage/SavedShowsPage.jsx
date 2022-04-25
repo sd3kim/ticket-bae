@@ -10,13 +10,15 @@ export default class SavedShowsPage extends React.Component {
   async componentDidMount() {
     try {
       let jwt = localStorage.getItem("token");
-      let fetchOrdersResponse = await fetch("/api/savedShows", {
+      let fetchOrdersResponse = await fetch("/api/savedShows/", {
         headers: { Authorization: "Bearer " + jwt },
       });
+      //   console.log(fetchOrdersResponse);
       if (!fetchOrdersResponse.ok) throw new Error("Couldn't fetch shows");
       let shows = await fetchOrdersResponse.json();
-      console.log("shows", shows);
+      this.state.showHistory.push(shows);
       this.setState({ showHistory: shows });
+      console.log("shows", this.state.showHistory);
     } catch (err) {
       console.error("ERROR:", err);
     }
@@ -30,7 +32,20 @@ export default class SavedShowsPage extends React.Component {
         {/* {savedShows && savedShows.map((show) => <li value={show}>{show}</li>)} */}
         {/* <input type="text" value={localStorage.getItem("saved")}></input> */}
         {/* <div>{savedShows}</div> */}
-        <div>{this.state.showHistory}</div>
+        <div>
+          {/* {this.state.showHistory &&
+            this.state.showHistory.map(
+              (e) => (
+                  e.savedItem.map((ev) => {
+                <li>{e.savedItem.name}</li>
+              )
+              // console.log(e)
+                )
+                  )} */}
+          {this.state.showHistory.map((events) =>
+            events.savedItem.map((e) => <li>{e.name}</li>)
+          )}
+        </div>
         <div>July 15 2022: Backstreet Boys @ Molson Ampitheatre</div>
       </div>
     );
