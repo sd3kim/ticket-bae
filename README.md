@@ -22,8 +22,7 @@ This project was created in collaboration with:
 ![Search Page](./backend/public/images/4.png)
 ![Search Results](./backend/public/images/5.png)
 ![Search Results-2](./backend/public/images/6.png)
-![Search Results-3](./backend/public/images/7.png)
-![Saved Show List Page](./backend/public/images/8.png)
+![Saved Show List Page](./backend/public/images/7.png)
 
 ---
 

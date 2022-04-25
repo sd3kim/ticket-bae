@@ -40,7 +40,6 @@ class App extends React.Component {
             </div>
             <Routes>
               <Route path="/" element={<HomePage />} />
-              {/* <Route path="/allEvents" element={<AllEvents />} /> */}
               <Route
                 path="/profile"
                 element={
