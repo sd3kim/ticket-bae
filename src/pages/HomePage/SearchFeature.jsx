@@ -193,12 +193,25 @@ class SearchFeature extends React.Component {
   };
 
   handleAdd = async (incoming_item) => {
-    this.setState({
-      savedItem: [
-        ...this.state.savedItem,
-        { name: incoming_item.target.value },
-      ],
-    });
+    let itemAlreadyExistsInCart = this.state.savedItem.some(
+      (obj) => obj.name === incoming_item.target.value
+    );
+    if (itemAlreadyExistsInCart) {
+      this.setState({
+        savedItem: this.state.savedItem.map((obj) =>
+          obj.name === incoming_item.target.value
+            ? { ...obj, qty: obj.qty + 1 }
+            : obj
+        ),
+      });
+    } else {
+      this.setState({
+        savedItem: [
+          ...this.state.savedItem,
+          { name: incoming_item.target.value, qty: 1 },
+        ],
+      });
+    }
   };
   handleSave = async (evt) => {
     try {

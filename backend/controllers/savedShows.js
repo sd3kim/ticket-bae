@@ -27,7 +27,14 @@ async function create(req, res) {
   }
 }
 
+async function update(req, res) {
+  try {
+    let shows = await savedShowsModel.findOne({ user: req.user._id });
+    console.log("this is update of controller", shows);
+  } catch (err) {}
+}
 module.exports = {
   create,
   index,
+  update,
 };

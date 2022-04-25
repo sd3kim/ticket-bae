@@ -6,6 +6,7 @@ const savedShowsSchema = new Schema(
     savedItem: [
       {
         name: String,
+        qty: Number,
       },
     ],
     user: { type: Schema.Types.ObjectId, ref: "User" },
