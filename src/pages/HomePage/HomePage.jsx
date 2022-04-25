@@ -7,6 +7,9 @@ export default function HomePage() {
   return (
     <div className="container">
       <h1>🎟️ TicketBae 🎟️</h1>
+      <p>
+        Use the search bar below to see when your favourite artists are playing!
+      </p>
       <SearchPage />
     </div>
   );

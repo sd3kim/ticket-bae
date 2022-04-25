@@ -7,7 +7,7 @@ export default function ProfilePage(props) {
       <h1>Profile Page</h1>
       <br />
       <br />
-      <img src="https://media.istockphoto.com/vectors/man-vector-icon-for-graphic-design-logo-web-site-social-media-mobile-vector-id1136995165?k=20&m=1136995165&s=612x612&w=0&h=PvnCZhxSnruLgMJm9r4SlFYa_NWHNXuWZJ1oQ5L_bh8="></img>
+      <img src="https://cdn-icons.flaticon.com/png/512/2829/premium/2829075.png?token=exp=1650859621~hmac=521663f9b2513c3ce4401efb58507687"></img>
       <UserLogOut setUserInState={props.setUserInState} user={props.user} />
     </div>
   );
