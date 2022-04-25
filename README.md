@@ -2,7 +2,7 @@
 
 ## **TickeBae**
 
-Café Java Hut is an e-commerce website designed to make ordering your favourite café drink or baked good a breeze.
+Tired of looking for your favourite concert on other ticket markerplaces? Look no further! TicketBae allows users to search for upcoming shows depending on the artist, location, or date and save them to your specially curated "Saved Show List".
 
 ---
 
@@ -16,43 +16,44 @@ This project was created in collaboration with:
 
 ### **Screenshots**
 
-![Signup Page](./public/images/screenshots/home.png)
-![Login Page](./public/images/screenshots/drinks-menu.png)
-![Profile Page](./public/images/screenshots/food-menu.png)
-![Search Page](./public/images/screenshots/drink-product.png)
-![Search Results](./public/images/screenshots/food-product.png)
-![Search Results-2](./public/images/screenshots/cart.png)
-![Saved Show List Page](./public/images/screenshots/order.png)
+![Signup Page](./backend/public/images/1.png)
+![Login Page](./backend/public/images/2.png)
+![Profile Page](./backend/public/images/3.png)
+![Search Page](./backend/public/images/4.png)
+![Search Results](./backend/public/images/5.png)
+![Search Results-2](./backend/public/images/6.png)
+![Search Results-3](./backend/public/images/7.png)
+![Saved Show List Page](./backend/public/images/8.png)
 
 ---
 
 ### **Technologies Used**
 
-- Javascript (Node.js)
+- Javascript
 - HTML
 - CSS (Grid, Flexbox)
-- PostgreSQL
+- MongoDB
+- Express
+- React
+- Node.js
+- MaterialUI
 - Visual Studio Code
-- Chrome DevTools
-- Trello
-- Lucid Chart
+- AWS
+- MongoDB Atlas
 
 ---
 
 ### **Getting Started**
 
-https://cafe-java-hut.herokuapp.com/home
+To start using TicketBae, a log in or sign up is required. From there, users will be redirected to the TicketBae main page where events can be searched.
 
-Users can browse through the menu page to select a hot/cold drink or fresh baked good, with options to select a size or customize the drink to your liking! The cart page will allow users to view their added items, with the option to remove if desired. When the user is all set to check out, the 'Order' button can be pressed displaying a nice "Thank You" message and showing the contents of the order.
+The search result will display a list of events, which the user can "add" to their show list. Don't forget to hit the "Save to Show List" button once all your favourite shows are added!
+
+Added shows will be saved, which can be viewed even if the user logs out.
 
 ---
 
 ### **Next Steps**
 
-- Implement OAUTH as a sign in feature.
-  - View past orders.
-  - Orders not checked out will be saved if the user logs out.
-  - User reward page linked to OAUTH.
-- Show total price of order.
-- Quantity button in the cart to avoid repated items.
-- When adding product to cart, show notification/alert that the order has been added.
+- Delete functionality - allows tickets to be removed if user no longer wants to save the added show.
+- Cards displaying events in "Saved Show List page" - instead of displaying a generic ticket photo, the associated artist photo will be displayed.
