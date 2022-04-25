@@ -1,5 +1,5 @@
 .nav-wrapper {
-  background-color: rgb(129, 129, 138);
+  background-color: rgb(118, 118, 215);
   padding-top: 20px;
   padding-bottom: 20px;
 }
@@ -13,4 +13,9 @@
 
 .button:hover {
   cursor: pointer;
+  color: white;
+}
+
+.link:hover {
+  color: white;
 }

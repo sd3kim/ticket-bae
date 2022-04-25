@@ -1,5 +1,6 @@
 import React from "react";
 import "./SavedShowsPage.css";
+import { Typography } from "@mui/material";
 
 export default class SavedShowsPage extends React.Component {
   state = {
@@ -27,7 +28,9 @@ export default class SavedShowsPage extends React.Component {
   render() {
     return (
       <div>
-        The following are your saved shows:
+        <Typography variant="h4">
+          The following are your saved shows!
+        </Typography>
         <br />
         <br />
         <div>

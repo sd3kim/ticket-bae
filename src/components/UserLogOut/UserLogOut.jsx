@@ -1,4 +1,5 @@
 import React from "react";
+import { Typography, Button } from "@mui/material";
 
 class UserLogOut extends React.Component {
   handleLogout = () => {
@@ -9,11 +10,16 @@ class UserLogOut extends React.Component {
   render() {
     return (
       <div className="UserLogOut">
-        <h2>Name: {this.props.user.name}</h2>
-        <h2>Email: {this.props.user.email}</h2>
-        <button className="btn-sm" onClick={this.handleLogout}>
-          Logout
-        </button>
+        <Typography variant="h4">Name: {this.props.user.name}</Typography>
+        <Typography variant="h4">Email: {this.props.user.email}</Typography>
+        <Button
+          onClick={this.handleLogout}
+          type="submit"
+          variant="contained"
+          sx={{ mt: 3, mb: 2 }}
+        >
+          Log Out
+        </Button>
       </div>
     );
   }
