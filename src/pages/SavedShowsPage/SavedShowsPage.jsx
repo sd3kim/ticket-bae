@@ -43,7 +43,6 @@ export default class SavedShowsPage extends React.Component {
         <br />
         <br />
         <Container sx={{ py: 8 }} maxWidth="md">
-          {/* End hero unit */}
           <Grid container spacing={4}>
             {this.state.showHistory.map((events) =>
               events.savedItem.map((e) => (
@@ -55,20 +54,18 @@ export default class SavedShowsPage extends React.Component {
                       flexDirection: "column",
                     }}
                   >
-                    {/* <CardMedia
+                    <CardMedia
                       component="img"
-                      sx={{
-                        // 16:9
-                        pt: "56.25%",
-                      }}
                       image="https://image.shutterstock.com/image-vector/concert-ticket-template-party-festival-600w-2021147534.jpg"
                       alt="random"
-                    /> */}
+                    />
                     <CardContent sx={{ flexGrow: 1 }}>
                       <Typography gutterBottom variant="h5" component="h2">
-                        {e.name}
+                        {e.name.slice(0, e.name.indexOf("2"))}
                       </Typography>
-                      {/* <Typography>{e.name}</Typography> */}
+                      <Typography>
+                        Date/Location: {e.name.substring(e.name.indexOf("2"))}
+                      </Typography>
                     </CardContent>
                     <CardActions>
                       <Button size="small">Quantiy: {e.qty}</Button>
