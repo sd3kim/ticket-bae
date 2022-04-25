@@ -5,10 +5,7 @@ const savedShowsSchema = new Schema(
   {
     savedItem: [
       {
-        event: {
-          name: { type: String },
-          qty: Number,
-        },
+        name: String,
       },
     ],
     user: { type: Schema.Types.ObjectId, ref: "User" },
@@ -18,5 +15,5 @@ const savedShowsSchema = new Schema(
   }
 );
 
-let savedShowsModel = mongoose.model("SavedShow", savedShowsSchema); // .model compiles the schema into a model
+let savedShowsModel = mongoose.model("SavedShow", savedShowsSchema);
 module.exports = savedShowsModel;
