@@ -44,7 +44,7 @@ class SearchFeature extends React.Component {
         if (eventDate[i] === this.state.date) {
           this.allEvents = [];
           this.allEvents.push(
-            eventNameMapped[i] + "—" + eventDate[i] + this.state.location
+            eventNameMapped[i] + "—" + eventDate[i] + "—" + this.state.location
           );
         } else {
           this.allEvents = [];
@@ -80,7 +80,11 @@ class SearchFeature extends React.Component {
             if (eventNameMapped[i] === this.state.name) {
               this.allEvents = [];
               this.allEvents.push(
-                eventNameMapped[i] + "—" + eventDate[i] + this.state.location
+                eventNameMapped[i] +
+                  "—" +
+                  eventDate[i] +
+                  "—" +
+                  this.state.location
               );
               this.allEvents = [];
               this.setState({
@@ -121,7 +125,7 @@ class SearchFeature extends React.Component {
         ) {
           this.allEvents = [];
           this.allEvents.push(
-            eventNameMapped[i] + "—" + eventDate[i] + this.state.location
+            eventNameMapped[i] + "—" + eventDate[i] + "—" + this.state.location
           );
           this.setState({
             event: `These are the upcoming events in ${this.state.location} on ${this.state.date}`,
@@ -147,7 +151,7 @@ class SearchFeature extends React.Component {
         const eventNameMapped = eventName.map((el) => el.name);
         for (let i = 0; i < eventNameMapped.length; i++) {
           this.allEvents.push(
-            eventNameMapped[i] + "—" + eventDate[i] + this.state.location
+            eventNameMapped[i] + "—" + eventDate[i] + "—" + this.state.location
           );
           if (this.state.location.length === 0) {
             this.setState({
