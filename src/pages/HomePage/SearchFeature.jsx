@@ -226,6 +226,7 @@ class SearchFeature extends React.Component {
       this.setState({ ...this.state, [e.target.name]: e.target.value });
   };
 
+
   handleAdd = async (incoming_item) => {
     this.setState({
       savedItem: [
@@ -234,7 +235,6 @@ class SearchFeature extends React.Component {
       ],
     });
   };
-
   handleSave = async (evt) => {
     try {
       let jwt = localStorage.getItem("token");

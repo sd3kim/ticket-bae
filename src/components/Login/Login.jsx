@@ -9,7 +9,7 @@ export default function Login(props) {
     password: "",
   });
 
-  const [error, setError] = useState(false);
+  // const [error, setError] = useState(false);
 
   let navigate = useNavigate();
 
