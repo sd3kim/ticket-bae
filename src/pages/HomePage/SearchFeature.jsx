@@ -1,5 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
+import "./SearchFeature.css";
 
 class SearchFeature extends React.Component {
   allEvents = [];
@@ -11,7 +12,7 @@ class SearchFeature extends React.Component {
     savedItem: [],
   };
 
-  handleSubmit = async (e) => {
+  handleSearch = async (e) => {
     e.preventDefault();
     if (
       this.state.name.length === 0 &&
@@ -225,27 +226,16 @@ class SearchFeature extends React.Component {
       this.setState({ ...this.state, [e.target.name]: e.target.value });
   };
 
-  handleClick = async (incoming_item) => {
-    // let itemAlreadyExistsInCart = this.state.savedItem.some(
-    //   (obj) => obj.event.name === incoming_item.name
-    // );
-    // if (itemAlreadyExistsInCart) {
-    //   this.setState({
-    //     savedItem: this.state.savedItem.map((obj) =>
-    //       obj.event.name === incoming_item.name
-    //         ? { ...obj, qty: obj.qty + 1 }
-    //         : obj
-    //     ),
-    //   });
-    // } else {
+  handleAdd = async (incoming_item) => {
     this.setState({
-      // savedItem: [...this.state.savedItem, { qty: 1, event: incoming_item }],
-      savedItem: [...this.state.savedItem, { qty: 1, name: incoming_item }],
+      savedItem: [
+        ...this.state.savedItem,
+        { name: incoming_item.target.value },
+      ],
     });
   };
 
   handleSave = async (evt) => {
-    // alert("ive been pressed");
     try {
       let jwt = localStorage.getItem("token");
       let fetchResponse = await fetch("/api/savedShows/", {
@@ -255,14 +245,14 @@ class SearchFeature extends React.Component {
           Authorization: "Bearer " + jwt,
         },
         body: JSON.stringify({
-          eventName: this.state.savedItem,
+          savedItem: this.state.savedItem,
         }),
       });
       let serverResponse = await fetchResponse.json();
       console.log("this is fetchResponse", fetchResponse);
       console.log("Success:", serverResponse);
-      // console.log("this is serverResponse", serverResponse);
-      this.setState({ savedItem: evt.target.value });
+      this.setState({ savedItem: [] });
+      console.log("this is saveditem", this.state.savedItem);
     } catch (err) {
       console.error("Error:", err);
     }
@@ -272,12 +262,12 @@ class SearchFeature extends React.Component {
     return (
       <div>
         <div className="searchbar">
-          <form onSubmit={this.handleSubmit}>
+          <form onSubmit={this.handleSearch}>
             <label>
               <input
                 type="text"
                 name="name"
-                placeholder="ARTIST"
+                placeholder="Artist"
                 value={this.state.name}
                 onChange={this.handleChange}
               ></input>
@@ -287,6 +277,7 @@ class SearchFeature extends React.Component {
                 type="text"
                 value={this.state.location}
                 name="location"
+                placeholder="Location"
                 onChange={this.handleChange}
                 required
               ></input>
@@ -304,7 +295,7 @@ class SearchFeature extends React.Component {
               <Route
                 path="/"
                 element={
-                  <button type="submit" onClick={this.handleSubmit}>
+                  <button type="submit" onClick={this.handleSearch}>
                     Search
                   </button>
                 }
@@ -316,14 +307,21 @@ class SearchFeature extends React.Component {
           <div key={this.state.date}>{this.state.event}</div>
           {this.allEvents &&
             this.allEvents.map((event) => (
-              <li>
-                {event}
-                <button onClick={this.handleSave} value={event}>
-                  Add Event
-                </button>
-              </li>
+              <table>
+                <tr>
+                  <th>Event:</th>
+                </tr>
+                <tr>
+                  <td>
+                    {event}{" "}
+                    <button onClick={this.handleAdd} value={event}>
+                      Add Event
+                    </button>
+                  </td>
+                </tr>
+              </table>
             ))}
-          <button onClick={this.handleClick}>submit</button>
+          <button onClick={this.handleSave}>Submit</button>
         </div>
       </div>
     );
