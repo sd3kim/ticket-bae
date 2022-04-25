@@ -167,11 +167,7 @@ class SearchFeature extends React.Component {
           console.log("no matched", eventNameMapped[i], eventDate[i]);
         }
       }
-    } else if (
-      this.state.name.length === 0 &&
-      this.state.date.length === 0 &&
-      this.state.location.length !== 0
-    ) {
+    } else if (this.state.name.length === 0 && this.state.date.length === 0) {
       this.allEvents = [];
       console.log("no event and no date just location");
       const response = await fetch(
@@ -277,7 +273,6 @@ class SearchFeature extends React.Component {
                 name="location"
                 placeholder="Location"
                 onChange={this.handleChange}
-                required
               ></input>
             </label>
             <label>
@@ -302,7 +297,7 @@ class SearchFeature extends React.Component {
           </form>
         </div>
         <div>
-          <div key={this.state.date}>{this.state.event}</div>
+          <h4>{this.state.event}</h4>
           {this.allEvents &&
             this.allEvents.map((event) => (
               <table>
