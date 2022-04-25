@@ -68,7 +68,7 @@ export default class SavedShowsPage extends React.Component {
                       </Typography>
                     </CardContent>
                     <CardActions>
-                      <Button size="small">Quantiy: {e.qty}</Button>
+                      <Button size="small">Quantity: {e.qty}</Button>
                     </CardActions>
                   </Card>
                 </Grid>
