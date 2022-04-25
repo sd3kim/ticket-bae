@@ -36,6 +36,7 @@ img {
 .button {
   border: none;
   background-color: white;
+  color: black;
 }
 .tag > a {
   text-decoration: none;

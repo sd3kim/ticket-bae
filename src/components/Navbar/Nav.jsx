@@ -13,7 +13,7 @@ function Nav() {
     <div>
       <nav className="nav-wrapper">
         <div>
-          {/* <Link to="/">TicketBae</Link> */}
+          <Link to="/">TicketBae</Link>
 
           <Routes>
             <Route

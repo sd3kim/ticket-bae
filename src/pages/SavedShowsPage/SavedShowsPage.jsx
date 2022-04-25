@@ -1,5 +1,6 @@
 import React from "react";
-
+import Nav from "../../components/Navbar/Nav";
+import { Routes, Route, useNavigate } from "react-router-dom";
 export default class SavedShowsPage extends React.Component {
   state = {
     showHistory: [],
@@ -24,6 +25,7 @@ export default class SavedShowsPage extends React.Component {
   render() {
     return (
       <div>
+        <Nav />
         These are your saved shows:
         <br />
         <br />
