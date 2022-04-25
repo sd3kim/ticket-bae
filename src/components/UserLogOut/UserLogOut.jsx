@@ -10,8 +10,8 @@ class UserLogOut extends React.Component {
   render() {
     return (
       <div className="UserLogOut">
-        <Typography variant="h4">Name: {this.props.user.name}</Typography>
-        <Typography variant="h4">Email: {this.props.user.email}</Typography>
+        <Typography variant="h5">Name: {this.props.user.name}</Typography>
+        <Typography variant="h5">Email: {this.props.user.email}</Typography>
         <Button
           onClick={this.handleLogout}
           type="submit"
