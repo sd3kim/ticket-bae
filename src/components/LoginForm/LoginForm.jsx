@@ -43,6 +43,7 @@ export default class SignUpForm extends Component {
   render() {
     return (
       <div>
+        <h1>Log In Page</h1>
         <div className="form-container" onSubmit={this.handleSubmit}>
           <form autoComplete="off">
             <label>Email</label>
