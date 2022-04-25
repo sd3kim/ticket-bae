@@ -8,10 +8,6 @@ export default function HomePage() {
     <div className="container">
       <h1>TicketBae</h1>
       <SearchFeature />
-      <footer>
-        <b>Please Note: </b>a location <b>must</b> be entered to complete a
-        search
-      </footer>
     </div>
   );
 }
