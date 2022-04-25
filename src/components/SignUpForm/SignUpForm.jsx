@@ -109,9 +109,6 @@ export default class SignUpForm extends Component {
                 required
                 autoComplete="off"
               />
-              {/* <button type="submit" disabled={disable}>
-                SIGN UP
-              </button> */}
               <Button
                 type="submit"
                 fullWidth

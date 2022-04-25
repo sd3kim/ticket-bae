@@ -6,7 +6,7 @@ import "../HomePage/HomePage.css";
 export default function HomePage() {
   return (
     <div className="container">
-      <h1>🎟️ TicketBae 🎟️</h1>
+      {/* <h1>🎟️ TicketBae 🎟️</h1> */}
       <SearchPage />
     </div>
   );

@@ -58,11 +58,6 @@ td {
 td {
   width: 120px;
 }
-/* 
-.form {
-  display: flex;
-  flex-direction: row;
-} */
 
 .form input {
   width: 200px;
@@ -80,6 +75,7 @@ button {
 
 button:hover {
   cursor: pointer;
+  color: red;
 }
 .shown {
   /* height: 150px; */

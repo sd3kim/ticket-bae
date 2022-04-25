@@ -2,6 +2,7 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import "../SearchPage/SearchPage.css";
 import { FcSearch } from "react-icons/fc";
+import { TextField } from "@mui/material";
 
 class SearchFeature extends React.Component {
   allEvents = [];
@@ -255,33 +256,34 @@ class SearchFeature extends React.Component {
             <div className="searchbar">
               <br />
               <form onSubmit={this.handleSearch} className="form">
-                <label>
-                  <input
-                    type="text"
-                    name="name"
-                    placeholder="Artist"
-                    value={this.state.name}
-                    onChange={this.handleChange}
-                  ></input>
-                </label>
-                <label>
-                  <input
-                    type="text"
-                    value={this.state.location}
-                    name="location"
-                    placeholder="Location"
-                    onChange={this.handleChange}
-                  ></input>
-                </label>
-                <label>
-                  <input
-                    type="datetime-local"
-                    id="meeting-time"
-                    name="date"
-                    value={this.state.date}
-                    onChange={this.handleChange}
-                  ></input>
-                </label>
+                <TextField
+                  fullWidth
+                  label="Event Name"
+                  id="fullWidth"
+                  type="text"
+                  name="name"
+                  // placeholder="Artist"
+                  value={this.state.name}
+                  onChange={this.handleChange}
+                />
+                <TextField
+                  fullWidth
+                  label="Event Location"
+                  id="fullWidth"
+                  type="text"
+                  value={this.state.location}
+                  name="location"
+                  // placeholder="Location"
+                  onChange={this.handleChange}
+                />
+                <TextField
+                  fullWidth
+                  id="fullWidth"
+                  type="datetime-local"
+                  name="date"
+                  value={this.state.date}
+                  onChange={this.handleChange}
+                />
                 <Routes>
                   <Route
                     path="/"
@@ -301,6 +303,10 @@ class SearchFeature extends React.Component {
           <h3>added to saved show list</h3>
         </div>
         <div>
+          <br />
+          <br />
+          <br />
+          <br />
           <br />
           <br />
           <div className="wrap2">
