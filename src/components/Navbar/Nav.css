@@ -9,13 +9,18 @@
   background-repeat: no-repeat;
   border: none;
   font-size: 16px;
+  color: white;
 }
 
 .button:hover {
   cursor: pointer;
+  color: blue;
+}
+
+.link {
   color: white;
 }
 
 .link:hover {
-  color: white;
+  color: blue;
 }
