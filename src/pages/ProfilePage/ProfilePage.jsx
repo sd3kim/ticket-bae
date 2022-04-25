@@ -5,7 +5,7 @@ import { Typography } from "@mui/material";
 export default function ProfilePage(props) {
   return (
     <div>
-      <Typography variant="h2">Profile Page</Typography>
+      <Typography variant="h3">Profile Page</Typography>
       <br />
       <br />
       <img src="https://i.imgur.com/cvqEXnb.png"></img>
