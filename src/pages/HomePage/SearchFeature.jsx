@@ -227,12 +227,12 @@ class SearchFeature extends React.Component {
 
   handleClick = async (incoming_item) => {
     // let itemAlreadyExistsInCart = this.state.savedItem.some(
-    //   (obj) => obj.event.name === incoming_item.name
+    //   (obj) => obj.eventName.name === incoming_item.name
     // );
     // if (itemAlreadyExistsInCart) {
     //   this.setState({
     //     savedItem: this.state.savedItem.map((obj) =>
-    //       obj.event.name === incoming_item.name
+    //       obj.eventName.name === incoming_item.name
     //         ? { ...obj, qty: obj.qty + 1 }
     //         : obj
     //     ),
@@ -240,10 +240,12 @@ class SearchFeature extends React.Component {
     // } else {
     this.setState({
       // savedItem: [...this.state.savedItem, { qty: 1, event: incoming_item }],
-      savedItem: [...this.state.savedItem, { qty: 1, name: incoming_item }],
+      savedItem: [
+        ...this.state.savedItem,
+        { name: incoming_item.target.value },
+      ],
     });
   };
-
   handleSave = async (evt) => {
     // alert("ive been pressed");
     try {
@@ -255,14 +257,17 @@ class SearchFeature extends React.Component {
           Authorization: "Bearer " + jwt,
         },
         body: JSON.stringify({
-          eventName: this.state.savedItem,
+          savedItem: this.state.savedItem,
         }),
       });
       let serverResponse = await fetchResponse.json();
       console.log("this is fetchResponse", fetchResponse);
       console.log("Success:", serverResponse);
       // console.log("this is serverResponse", serverResponse);
-      this.setState({ savedItem: evt.target.value });
+      // this.state.savedItem.push({ event: { name: evt.target.value } });
+      // console.log("name of the state", this.state.savedItem.name);
+      this.setState({ savedItem: [] });
+      console.log("this is saveditem", this.state.savedItem);
     } catch (err) {
       console.error("Error:", err);
     }
@@ -318,12 +323,12 @@ class SearchFeature extends React.Component {
             this.allEvents.map((event) => (
               <li>
                 {event}
-                <button onClick={this.handleSave} value={event}>
+                <button onClick={this.handleClick} value={event}>
                   Add Event
                 </button>
               </li>
             ))}
-          <button onClick={this.handleClick}>submit</button>
+          <button onClick={this.handleSave}>submit</button>
         </div>
       </div>
     );
