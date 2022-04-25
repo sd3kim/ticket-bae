@@ -1,6 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import "../SearchPage/SearchPage.css";
+import { FcSearch } from "react-icons/fc";
 
 class SearchFeature extends React.Component {
   allEvents = [];
@@ -233,7 +234,8 @@ class SearchFeature extends React.Component {
         <div className="wrap">
           <div className="search">
             <div className="searchbar">
-              <form onSubmit={this.handleSearch}>
+              <br />
+              <form onSubmit={this.handleSearch} className="form">
                 <label>
                   <input
                     type="text"
@@ -266,7 +268,7 @@ class SearchFeature extends React.Component {
                     path="/"
                     element={
                       <button type="submit" onClick={this.handleSearch}>
-                        Search
+                        <FcSearch />
                       </button>
                     }
                   />
