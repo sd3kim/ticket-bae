@@ -2,7 +2,7 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import "../SearchPage/SearchPage.css";
 import { FcSearch } from "react-icons/fc";
-import { TextField } from "@mui/material";
+import { TextField, Table, TableHead, TableRow, Button } from "@mui/material";
 
 class SearchFeature extends React.Component {
   allEvents = [];
@@ -300,7 +300,7 @@ class SearchFeature extends React.Component {
           </div>
         </div>
         <div className={this.state.hidden ? "hidden" : "shown "}>
-          <h3>added to saved show list</h3>
+          <h3>Added to Saved Show List</h3>
         </div>
         <div>
           <br />
@@ -313,19 +313,25 @@ class SearchFeature extends React.Component {
             <h4>{this.state.event}</h4>
             {this.allEvents &&
               this.allEvents.map((event) => (
-                <table>
+                <Table>
                   {/* <tr>
                   <th>Event:</th>
                 </tr> */}
-                  <tr>
-                    <td>{event} </td>
-                    <td>
-                      <button onClick={this.handleAdd} value={event}>
-                        Add Event
-                      </button>
-                    </td>
-                  </tr>
-                </table>
+                  <TableHead>
+                    <TableRow>
+                      <td>{event} </td>
+                      <td>
+                        <Button
+                          variant="outlined"
+                          onClick={this.handleAdd}
+                          value={event}
+                        >
+                          Add Event
+                        </Button>
+                      </td>
+                    </TableRow>
+                  </TableHead>
+                </Table>
               ))}
           </div>
         </div>
