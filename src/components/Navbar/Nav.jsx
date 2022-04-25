@@ -60,22 +60,6 @@ function Nav() {
           </nav>
         </Toolbar>
       </AppBar>
-
-      {/* <nav className="nav-wrapper">
-        <div>
-          <button className="button" onClick={clearPage}>
-            🎟️ TicketBae 🎟️
-          </button>
-        </div>
-        <div className="nav">
-          <div className="tag">
-            <Link to="/profile">Profile</Link>
-          </div>
-          <div className="tag">
-            <Link to="/savedShows">Saved Show List</Link>
-          </div>
-        </div>
-      </nav> */}
     </div>
   );
 }
