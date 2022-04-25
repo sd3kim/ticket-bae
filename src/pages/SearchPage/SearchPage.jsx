@@ -48,6 +48,7 @@ class SearchFeature extends React.Component {
             " " +
               eventNameMapped[i] +
               " " +
+              "Date" +
               eventDate[i] +
               " " +
               " " +
@@ -89,17 +90,8 @@ class SearchFeature extends React.Component {
           for (let i = 0; i < eventNameMapped.length; i++) {
             if (eventNameMapped[i] === this.state.name) {
               this.allEvents = [];
-              console.log("matched events name", eventDate, eventNameMapped);
               this.allEvents.push(
-                " " +
-                  eventNameMapped[i] +
-                  " " +
-                  eventDate[i] +
-                  " " +
-                  " " +
-                  " " +
-                  " " +
-                  this.state.location
+                eventNameMapped[i] + eventDate[i] + this.state.location
               );
               this.allEvents = [];
               this.setState({
@@ -110,7 +102,6 @@ class SearchFeature extends React.Component {
               this.setState({
                 event: `${this.state.name} has no upcoming shows in ${this.state.location}`,
               });
-              console.log("no matched", eventDate[i]);
             }
           }
         }
@@ -141,15 +132,7 @@ class SearchFeature extends React.Component {
         ) {
           this.allEvents = [];
           this.allEvents.push(
-            " " +
-              eventNameMapped[i] +
-              " " +
-              eventDate[i] +
-              " " +
-              " " +
-              " " +
-              " " +
-              this.state.location
+            eventNameMapped[i] + eventDate[i] + this.state.location
           );
           this.setState({
             event: `These are the upcoming events in ${this.state.location} on ${this.state.date}`,
@@ -175,15 +158,7 @@ class SearchFeature extends React.Component {
         const eventNameMapped = eventName.map((el) => el.name);
         for (let i = 0; i < eventNameMapped.length; i++) {
           this.allEvents.push(
-            " " +
-              eventNameMapped[i] +
-              " " +
-              eventDate[i] +
-              " " +
-              " " +
-              " " +
-              " " +
-              this.state.location
+            eventNameMapped[i] + eventDate[i] + this.state.location
           );
           if (this.state.location.length === 0) {
             this.setState({

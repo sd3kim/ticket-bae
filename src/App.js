@@ -6,6 +6,7 @@ import HomePage from "./pages/HomePage/HomePage";
 import Nav from "./components/Navbar/Nav";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import SavedShowsPage from "./pages/SavedShowsPage/SavedShowsPage";
+import { Typography, Box } from "@mui/material";
 
 class App extends React.Component {
   state = {
@@ -26,15 +27,6 @@ class App extends React.Component {
         let userDoc = payload.user;
         this.setState({ user: userDoc });
       }
-    }
-  };
-
-  findArtists = async () => {
-    try {
-      let getArtistList = await fetch("api/artists");
-      let artists = await getArtistList.json();
-    } catch (err) {
-      console.log(err);
     }
   };
 
@@ -64,6 +56,16 @@ class App extends React.Component {
         ) : (
           <AuthPage setUserInState={this.setUserInState} />
         )}
+        <Box sx={{ bgcolor: "background.paper", p: 24 }} component="footer">
+          <Typography
+            variant="subtitle1"
+            align="center"
+            color="text.secondary"
+            component="p"
+          >
+            Copyright © GA - Team Java the Hut 2022.
+          </Typography>
+        </Box>
       </div>
     );
   }

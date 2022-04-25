@@ -1,6 +1,15 @@
 import React from "react";
 import "./SavedShowsPage.css";
-import { Typography } from "@mui/material";
+import {
+  Typography,
+  Container,
+  Grid,
+  Card,
+  CardMedia,
+  CardContent,
+  CardActions,
+  Button,
+} from "@mui/material";
 
 export default class SavedShowsPage extends React.Component {
   state = {
@@ -33,18 +42,43 @@ export default class SavedShowsPage extends React.Component {
         </Typography>
         <br />
         <br />
-        <div>
-          {this.state.showHistory.map((events) =>
-            events.savedItem.map((e) => (
-              <li>
-                {e.name}
-                <button onClick={this.handleUpdate}>-</button>
-                {e.qty}
-                <button>+</button>
-              </li>
-            ))
-          )}
-        </div>
+        <Container sx={{ py: 8 }} maxWidth="md">
+          {/* End hero unit */}
+          <Grid container spacing={4}>
+            {this.state.showHistory.map((events) =>
+              events.savedItem.map((e) => (
+                <Grid item key={e.name} xs={12} sm={6} md={4}>
+                  <Card
+                    sx={{
+                      height: "100%",
+                      display: "flex",
+                      flexDirection: "column",
+                    }}
+                  >
+                    {/* <CardMedia
+                      component="img"
+                      sx={{
+                        // 16:9
+                        pt: "56.25%",
+                      }}
+                      image="https://image.shutterstock.com/image-vector/concert-ticket-template-party-festival-600w-2021147534.jpg"
+                      alt="random"
+                    /> */}
+                    <CardContent sx={{ flexGrow: 1 }}>
+                      <Typography gutterBottom variant="h5" component="h2">
+                        {e.name}
+                      </Typography>
+                      {/* <Typography>{e.name}</Typography> */}
+                    </CardContent>
+                    <CardActions>
+                      <Button size="small">Quantiy: {e.qty}</Button>
+                    </CardActions>
+                  </Card>
+                </Grid>
+              ))
+            )}
+          </Grid>
+        </Container>
       </div>
     );
   }
