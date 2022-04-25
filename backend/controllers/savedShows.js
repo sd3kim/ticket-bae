@@ -26,18 +26,7 @@ async function create(req, res) {
   }
 }
 
-async function deleteShow(req, res) {
-  try {
-    await savedShowsModel.findByIdAndDelete(req.body.savedItem._id);
-    console.log("id has been found");
-    console.log("message: ", req.body.savedItem._id);
-  } catch (err) {
-    console.log(err);
-  }
-}
-
 module.exports = {
   create,
   index,
-  delete: deleteShow,
 };
