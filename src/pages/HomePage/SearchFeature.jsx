@@ -28,9 +28,6 @@ class SearchFeature extends React.Component {
       const eventDateMapped = eventName.map((el) => el.dates);
       const eventDate = eventDateMapped.map((el) => el.start.dateTime);
       const eventNameMapped = eventName.map((el) => el.name);
-      const locationMapped = eventName.map((el) => el._embedded);
-      const eventLocationVenue = locationMapped.map((el) => el.venues);
-      const eventLocationCity = locationMapped.map((el) => el.city);
       console.log("all events", eventNameMapped);
       for (let i = 0; i < eventNameMapped.length; i++) {
         if (eventDate[i] === this.state.date) {
@@ -52,7 +49,6 @@ class SearchFeature extends React.Component {
           this.setState({
             event: `There are no upcoming events for ${this.state.name} in ${this.state.location}`,
           });
-          console.log("no matched", eventDate[i]);
         }
       }
     } else if (
@@ -72,7 +68,6 @@ class SearchFeature extends React.Component {
       const showEvents = await response.json();
       if ("_embedded" in showEvents) {
         this.allEvents = [];
-        console.log("oh no");
         const eventName = showEvents._embedded.events;
         const eventDateMapped = eventName.map((el) => el.dates);
         const eventDate = eventDateMapped.map((el) => el.start.dateTime);
@@ -80,8 +75,6 @@ class SearchFeature extends React.Component {
         if ("_embedded" in eventName) {
           this.allEvents = [];
           const locationMapped = eventName.map((el) => el._embedded);
-          const eventLocationVenue = locationMapped.map((el) => el.venues);
-          const eventLocationCity = locationMapped.map((el) => el.city);
           for (let i = 0; i < eventNameMapped.length; i++) {
             if (eventNameMapped[i] === this.state.name) {
               this.allEvents = [];
@@ -121,7 +114,6 @@ class SearchFeature extends React.Component {
       this.state.date.length !== 0 &&
       this.state.location.length !== 0
     ) {
-      console.log("i am at right place");
       this.allEvents = [];
       const response = await fetch(
         `https://app.ticketmaster.com/discovery/v2/events?apikey=efomLcpWJQWbkN9TXlGgmOc98CZzZgkh&keyword=${this.state.name}&locale=*&startDateTime=${this.state.date}:00Z&size=150&city=${this.state.location}&countryCode=CA&segmentId=KZFzniwnSyZfZ7v7nJ`
@@ -131,20 +123,12 @@ class SearchFeature extends React.Component {
       const eventDateMapped = eventName.map((el) => el.dates);
       const eventDate = eventDateMapped.map((el) => el.start.dateTime);
       const eventNameMapped = eventName.map((el) => el.name);
-      const locationMapped = eventName.map((el) => el._embedded);
-      const eventLocationVenue = locationMapped.map((el) => el.venues);
-      const eventLocationCity = locationMapped.map((el) => el.city);
       for (let i = 0; i < eventNameMapped.length; i++) {
         if (
           eventNameMapped[i] === this.state.name ||
           eventDate[i] === this.state.date
         ) {
           this.allEvents = [];
-          console.log(
-            "matched events name and date",
-            eventDate,
-            eventNameMapped
-          );
           this.allEvents.push(
             " " +
               eventNameMapped[i] +
@@ -164,12 +148,10 @@ class SearchFeature extends React.Component {
           this.setState({
             event: `There are no upcoming events on ${this.state.date} in ${this.state.location}`,
           });
-          console.log("no matched", eventNameMapped[i], eventDate[i]);
         }
       }
     } else if (this.state.name.length === 0 && this.state.date.length === 0) {
       this.allEvents = [];
-      console.log("no event and no date just location");
       const response = await fetch(
         `https://app.ticketmaster.com/discovery/v2/events?apikey=efomLcpWJQWbkN9TXlGgmOc98CZzZgkh&locale=*&size=150&city=${this.state.location}&countryCode=CA&segmentId=KZFzniwnSyZfZ7v7nJ`
       );
@@ -177,17 +159,9 @@ class SearchFeature extends React.Component {
       if ("_embedded" in showEvents) {
         this.allEvents = [];
         const eventName = showEvents._embedded.events;
-        console.log("oh no");
         const eventDateMapped = eventName.map((el) => el.dates);
         const eventDate = eventDateMapped.map((el) => el.start.dateTime);
         const eventNameMapped = eventName.map((el) => el.name);
-        const locationMapped = eventName.map((el) => el._embedded);
-        const eventLocationVenue = locationMapped.map((el) => el.venues);
-        const eventLocationCity = locationMapped.map((el) => el.city);
-        console.log("i am good all events", locationMapped);
-        console.log("i am good all events", eventLocationCity.name);
-        console.log("i am good all events", eventLocationVenue);
-        console.log("i am good all events", eventLocationCity.name);
         for (let i = 0; i < eventNameMapped.length; i++) {
           this.allEvents.push(
             " " +
@@ -200,17 +174,14 @@ class SearchFeature extends React.Component {
               " " +
               this.state.location
           );
-
-          console.log("All events in searched city: ", this.allEvents);
           this.setState({
             event: `These are all the upcoming events in ${this.state.location}`,
           });
-          console.log(this.state.event);
         }
       } else {
         this.allEvents = [];
         this.setState({
-          event: `These are upcoming events in ${this.state.location}`,
+          event: `There are no upcoming events in ${this.state.location}`,
         });
       }
     }
@@ -232,7 +203,6 @@ class SearchFeature extends React.Component {
   handleSave = async (evt) => {
     try {
       let jwt = localStorage.getItem("token");
-      console.log(jwt);
       let fetchResponse = await fetch("/api/savedShows/", {
         method: "POST",
         headers: {
@@ -244,10 +214,7 @@ class SearchFeature extends React.Component {
         }),
       });
       let serverResponse = await fetchResponse.json();
-      console.log("this is fetchResponse", fetchResponse);
-      console.log("Success:", serverResponse);
       this.setState({ savedItem: [] });
-      console.log("this is saveditem", this.state.savedItem);
     } catch (err) {
       console.error("Error:", err);
     }
@@ -302,12 +269,12 @@ class SearchFeature extends React.Component {
           {this.allEvents &&
             this.allEvents.map((event) => (
               <table>
-                <tr>
+                {/* <tr>
                   <th>Event:</th>
-                </tr>
+                </tr> */}
                 <tr>
+                  <td>{event} </td>
                   <td>
-                    {event}{" "}
                     <button onClick={this.handleAdd} value={event}>
                       Add Event
                     </button>
@@ -315,7 +282,7 @@ class SearchFeature extends React.Component {
                 </tr>
               </table>
             ))}
-          <button onClick={this.handleSave}>Submit</button>
+          <button onClick={this.handleSave}>Save to Your Show List</button>
         </div>
       </div>
     );
