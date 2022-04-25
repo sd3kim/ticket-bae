@@ -3,7 +3,7 @@ const savedShowsModel = require("../models/savedShow");
 async function index(req, res) {
   try {
     let shows = await savedShowsModel
-      .find({})
+      .find({ user: req.user._id })
       .sort({ createdAt: "desc" })
       .exec();
     res.status(200).json(shows);
@@ -13,10 +13,11 @@ async function index(req, res) {
 }
 
 async function create(req, res) {
+  console.log("req.user: ", req.user);
   try {
     await savedShowsModel.create({
       savedItem: req.body.savedItem,
-      // user: req.user._id,
+      user: req.user._id,
     });
     console.log("message: ", req.body.savedItem);
     res.status(200).json("ok");
