@@ -43,18 +43,8 @@ class SearchFeature extends React.Component {
       for (let i = 0; i < eventNameMapped.length; i++) {
         if (eventDate[i] === this.state.date) {
           this.allEvents = [];
-          console.log("matched events", eventDate, eventNameMapped);
           this.allEvents.push(
-            " " +
-              eventNameMapped[i] +
-              " " +
-              "Date" +
-              eventDate[i] +
-              " " +
-              " " +
-              " " +
-              " " +
-              this.state.location
+            eventNameMapped[i] + "—" + eventDate[i] + this.state.location
           );
         } else {
           this.allEvents = [];
@@ -69,7 +59,6 @@ class SearchFeature extends React.Component {
       this.state.location.length !== 0
     ) {
       this.allEvents = [];
-      console.log("event and no date nad location");
       this.setState({
         event: `${this.state.name} has no upcoming shows in ${this.state.location}`,
       });
@@ -91,11 +80,11 @@ class SearchFeature extends React.Component {
             if (eventNameMapped[i] === this.state.name) {
               this.allEvents = [];
               this.allEvents.push(
-                eventNameMapped[i] + eventDate[i] + this.state.location
+                eventNameMapped[i] + "—" + eventDate[i] + this.state.location
               );
               this.allEvents = [];
               this.setState({
-                event: `There are the upcoming events for ${this.state.name}`,
+                event: `These are the upcoming events for ${this.state.name}`,
               });
             } else {
               this.allEvents = [];
@@ -132,7 +121,7 @@ class SearchFeature extends React.Component {
         ) {
           this.allEvents = [];
           this.allEvents.push(
-            eventNameMapped[i] + eventDate[i] + this.state.location
+            eventNameMapped[i] + "—" + eventDate[i] + this.state.location
           );
           this.setState({
             event: `These are the upcoming events in ${this.state.location} on ${this.state.date}`,
@@ -158,7 +147,7 @@ class SearchFeature extends React.Component {
         const eventNameMapped = eventName.map((el) => el.name);
         for (let i = 0; i < eventNameMapped.length; i++) {
           this.allEvents.push(
-            eventNameMapped[i] + eventDate[i] + this.state.location
+            eventNameMapped[i] + "—" + eventDate[i] + this.state.location
           );
           if (this.state.location.length === 0) {
             this.setState({
@@ -309,9 +298,7 @@ class SearchFeature extends React.Component {
                 <Table>
                   <TableHead>
                     <TableRow>
-                      <td>
-                        <Typography variant="h7">{event}</Typography>
-                      </td>
+                      <td className="td-event">{event}</td>
                       <td>
                         <Button
                           variant="outlined"
