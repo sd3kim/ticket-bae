@@ -236,6 +236,7 @@ class SearchFeature extends React.Component {
   handleSave = async (evt) => {
     try {
       let jwt = localStorage.getItem("token");
+      console.log(jwt);
       let fetchResponse = await fetch("/api/savedShows/", {
         method: "POST",
         headers: {

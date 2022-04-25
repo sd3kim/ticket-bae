@@ -6,6 +6,8 @@ require("./backend/config/database");
 var bodyParser = require("body-parser");
 require("body-parser-zlib")(bodyParser);
 
+const auth = require("./backend/config/auth");
+
 const app = express();
 require("./backend/config/database");
 
@@ -14,12 +16,10 @@ const port = process.env.PORT || 3001;
 app.use(logger("dev"));
 app.use(express.json());
 
-// app.use(favicon(path.join(__dirname, "build", "favicon.ico")));
+app.use(auth);
+
 app.use(express.static(path.join(__dirname, "./frontend/build")));
 
-// app.use("/api/artists", require("./backend/routes/api/artists"));
-// app.use("/api/locations", require("./backend/routes/api/locations"));
-// app.use("/api/dates", require("./backend/routes/api/dates"));
 app.use("/api/users", require("./backend/routes/api/users"));
 app.use("/api/savedShows", require("./backend/routes/api/savedShows"));
 
