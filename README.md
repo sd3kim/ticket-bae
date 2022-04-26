@@ -35,6 +35,7 @@ This project was created in collaboration with:
 - Express
 - React
 - Node.js
+- Ticketmaster API
 - MaterialUI
 - Visual Studio Code
 - AWS
