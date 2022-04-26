@@ -44,6 +44,8 @@ This project was created in collaboration with:
 
 ### **Getting Started**
 
+http://54.242.115.104:3001/
+
 To start using TicketBae, a log in or sign up is required. From there, users will be redirected to the TicketBae main page where events can be searched.
 
 The search result will display a list of events, which the user can "add" to their show list. Don't forget to hit the "Save to Show List" button once all your favourite shows are added!
