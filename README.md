@@ -57,5 +57,6 @@ Added shows will be saved, which can be viewed even if the user logs out.
 
 ### **Next Steps**
 
+- Correct date format.
 - Delete functionality - allows tickets to be removed if user no longer wants to save the added show.
 - Cards displaying events in "Saved Show List page" - instead of displaying a generic ticket photo, the associated artist photo will be displayed.
