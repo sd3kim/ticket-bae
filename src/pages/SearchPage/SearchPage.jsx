@@ -29,7 +29,6 @@ class SearchFeature extends React.Component {
       this.state.date.length !== 0 &&
       this.state.location.length !== 0
     ) {
-      // this.allEvents = [];
       console.log(this.state.date);
       const response = await fetch(
         `https://app.ticketmaster.com/discovery/v2/events?apikey=efomLcpWJQWbkN9TXlGgmOc98CZzZgkh&locale=*&startDateTime=${this.state.date}:00Z&size=150&city=${this.state.location}&countryCode=CA&segmentId=KZFzniwnSyZfZ7v7nJ`
@@ -42,12 +41,10 @@ class SearchFeature extends React.Component {
       console.log("all events", eventNameMapped);
       for (let i = 0; i < eventNameMapped.length; i++) {
         if (eventDate[i] === this.state.date) {
-          // this.allEvents = [];
           this.allEvents.push(
             eventNameMapped[i] + "—" + eventDate[i] + "—" + this.state.location
           );
         } else {
-          // this.allEvents = [];
           this.setState({
             event: `There are no upcoming events for ${this.state.name} in ${this.state.location}`,
           });
@@ -58,7 +55,6 @@ class SearchFeature extends React.Component {
       this.state.date.length === 0 &&
       this.state.location.length !== 0
     ) {
-      // this.allEvents = [];
       this.setState({
         event: `${this.state.name} has no upcoming shows in ${this.state.location}`,
       });
@@ -68,17 +64,13 @@ class SearchFeature extends React.Component {
       );
       const showEvents = await response.json();
       if ("_embedded" in showEvents) {
-        // this.allEvents = [];
         const eventName = showEvents._embedded.events;
         const eventDateMapped = eventName.map((el) => el.dates);
         const eventDate = eventDateMapped.map((el) => el.start.dateTime);
         const eventNameMapped = eventName.map((el) => el.name);
-        // if ("_embedded" in eventName) {
         const locationMapped = eventName.map((el) => el._embedded);
-        // this.allEvents = [];
         for (let i = 0; i < eventNameMapped.length; i++) {
           if (eventNameMapped[i] === this.state.name) {
-            // this.allEvents = [];
             this.allEvents.push(
               eventNameMapped[i] +
                 "—" +
@@ -86,21 +78,16 @@ class SearchFeature extends React.Component {
                 "—" +
                 this.state.location
             );
-            // this.allEvents = [];
             this.setState({
               event: `These are the upcoming events for ${this.state.name}`,
             });
           } else {
-            // this.allEvents = [];
             this.setState({
               event: `${this.state.name} has upcoming shows in ${this.state.location}`,
             });
           }
-          // this.allEvents = [];
         }
-        // }
       } else {
-        // this.allEvents = [];
         this.setState({
           event: `${this.state.name} has no upcoming shows in ${this.state.location}`,
         });
@@ -110,7 +97,6 @@ class SearchFeature extends React.Component {
       this.state.date.length !== 0 &&
       this.state.location.length !== 0
     ) {
-      // this.allEvents = [];
       const response = await fetch(
         `https://app.ticketmaster.com/discovery/v2/events?apikey=efomLcpWJQWbkN9TXlGgmOc98CZzZgkh&keyword=${this.state.name}&locale=*&startDateTime=${this.state.date}:00Z&size=150&city=${this.state.location}&countryCode=CA&segmentId=KZFzniwnSyZfZ7v7nJ`
       );
@@ -124,7 +110,6 @@ class SearchFeature extends React.Component {
           eventNameMapped[i] === this.state.name ||
           eventDate[i] === this.state.date
         ) {
-          // this.allEvents = [];
           this.allEvents.push(
             eventNameMapped[i] + "—" + eventDate[i] + "—" + this.state.location
           );
@@ -132,20 +117,17 @@ class SearchFeature extends React.Component {
             event: `These are the upcoming events in ${this.state.location} on ${this.state.date}`,
           });
         } else {
-          // this.allEvents = [];
           this.setState({
             event: `There are no upcoming events on ${this.state.date} in ${this.state.location}`,
           });
         }
       }
     } else if (this.state.name.length === 0 && this.state.date.length === 0) {
-      // this.allEvents = [];
       const response = await fetch(
         `https://app.ticketmaster.com/discovery/v2/events?apikey=efomLcpWJQWbkN9TXlGgmOc98CZzZgkh&locale=*&size=150&city=${this.state.location}&countryCode=CA&segmentId=KZFzniwnSyZfZ7v7nJ`
       );
       const showEvents = await response.json();
       if ("_embedded" in showEvents) {
-        // this.allEvents = [];
         const eventName = showEvents._embedded.events;
         const eventDateMapped = eventName.map((el) => el.dates);
         const eventDate = eventDateMapped.map((el) => el.start.dateTime);
@@ -165,7 +147,6 @@ class SearchFeature extends React.Component {
           }
         }
       } else {
-        // this.allEvents = [];
         this.setState({
           event: `There are no upcoming events in ${this.state.location}`,
         });
@@ -217,7 +198,6 @@ class SearchFeature extends React.Component {
           savedItem: this.state.savedItem,
         }),
       });
-      let serverResponse = await fetchResponse.json();
       this.setState({ savedItem: [] });
     } catch (err) {
       console.error("Error:", err);

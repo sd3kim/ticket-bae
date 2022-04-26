@@ -62,7 +62,7 @@ class App extends React.Component {
             color="text.secondary"
             component="p"
           >
-            Copyright © GA - Team Java the Hut 2022.
+            Copyright © GA - Team Java the Hut 2022
           </Typography>
         </Box>
       </div>
