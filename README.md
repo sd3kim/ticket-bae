@@ -1,6 +1,4 @@
-# Project-3
-
-## **TickeBae**
+# **TicketBae**
 
 Tired of looking for your favourite concert on other ticket markerplaces? Look no further! TicketBae allows users to search for upcoming shows depending on the artist, location, or date and save them to your specially curated "Saved Show List".
 
