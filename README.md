@@ -6,7 +6,7 @@ Tired of looking for your favourite concert on other ticket markerplaces? Look n
 
 ---
 
-## **TickeBae**
+## **Collaborators**
 
 This project was created in collaboration with:
 
